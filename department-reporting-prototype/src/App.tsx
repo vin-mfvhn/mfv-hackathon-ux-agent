@@ -27,29 +27,25 @@ const Router: FC = () => {
 };
 
 /**
- * Member-only routes.
+ * Member-only routes for Department Reporting Application.
  */
 const Member = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path={Paths.Home} lazy={() => import('./layouts/Desktop/route')} errorElement={<Error />}>
-        <Route index lazy={() => import('./routes/department-reporting/route')} />
+        <Route index lazy={() => import('./routes/dashboard/route')} />
         
-        {/* Department Reporting Routes */}
-        <Route path={Paths.DepartmentReporting.Dashboard} lazy={() => import('./routes/department-reporting/route')} />
-        <Route path={Paths.DepartmentReporting.AllocationConfig} lazy={() => import('./routes/allocation-config/route')} />
+        {/* Executive Dashboard Routes */}
+        <Route path={Paths.Executive.Index} lazy={() => import('./routes/executive/route')} />
         
-        {/* Original demo routes kept for reference */}
-        <Route path={Paths.Dashboard} lazy={() => import('./routes/dashboard/route')} />
-        <Route path={Paths.Users.Index} lazy={() => import('./routes/users/route')} />
-        <Route path={Paths.Users.Detail} lazy={() => import('./routes/users/user/route')} />
-        <Route path={Paths.Posts.Index} lazy={() => import('./routes/posts/route')} />
-        <Route path={Paths.Posts.Detail} lazy={() => import('./routes/posts/post/route')} />
-        <Route path={Paths.Posts.New} lazy={() => import('./routes/posts/new/route')} />
-        <Route path={Paths.Posts.Edit} lazy={() => import('./routes/posts/edit/route')} />
-        <Route path={Paths.Posts.Destroy} lazy={() => import('./routes/posts/destroy/route')} />
-        <Route path={Paths.Comments} lazy={() => import('./routes/comments/route')} />
-        <Route path={Paths.Todos} lazy={() => import('./routes/todos/route')} />
+        {/* Department Manager Portal Routes */}
+        <Route path={Paths.MyDepartment.Index} lazy={() => import('./routes/my-department/route')} />
+        
+        {/* Allocation Configuration Routes */}
+        <Route path={Paths.Allocation.Index} lazy={() => import('./routes/allocation/route')} />
+        
+        {/* Reports Center Routes */}
+        <Route path={Paths.Reports.Index} lazy={() => import('./routes/reports/route')} />
       </Route>,
     ),
   );

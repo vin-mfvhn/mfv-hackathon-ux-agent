@@ -1,128 +1,170 @@
-# @frontend-boilerplate/react-router-lib
+# Department-Level Reporting & Cost Center Allocation Prototype
 
-This package is a boilerplate (≒ starter kit) based on technical standards for web frontend development at Money Forward. It is provided as a "[Paved Load](https://www.slideshare.net/slideshow/the-paved-road-at-netflix/75867013)" to help developers efficiently start projects and proceed with development in compliance with the standards.
+A comprehensive prototype for enterprise lease cost management built with MoneyForward MFUI components and React Router 7.
 
-## Main Features
+## Features
 
-- **Project Structure Template:** Provides a standard directory structure and file layout.
-- **Build Tool Configuration**: Provides build tool settings using Vite.
-- **Coding Best Practices:** Provides best practices for coding in TypeScript, CSS, and so on.
-- **Linting & Formatting:** Includes configurations for static code analysis and formatting using ESLint, Stylelint, and Prettier.
-- **Testing:** Provides basic settings for unit tests and E2E tests using testing frameworks like Vitest, React Testing Library, and Playwright.
+- **Executive Dashboard**: KPI cards, variance alerts, and department breakdown analysis
+- **Department Manager Portal**: Self-service cost visibility and budget tracking  
+- **Allocation Configuration**: Interactive cost allocation setup with real-time preview
+- **Advanced Analytics**: Space utilization and scenario modeling
+- **Mobile-First Design**: Fully responsive MFUI implementation
 
-## Capabilities, Limitations, and Prohibitions
+## Target Users
 
-### Capabilities
+- **Finance Directors**: Executive reporting and strategic decision-making
+- **Department Managers**: Self-service lease cost visibility
+- **System Administrators**: Cost allocation configuration and management
+- **Real Estate Managers**: Portfolio optimization and space planning
 
-- Use as a reference to understand technical standards.
-- Use as a template for setting up new projects.
-- Use as a reference when introducing technical standards to existing projects.
-- Use as educational material for training new members.
+## Technology Stack
 
-### Limitations
+- **Frontend**: React 19 + React Router 7
+- **UI Components**: MoneyForward MFUI Component Library v2.0
+- **Design System**: MFUI Design Tokens v2.0
+- **Styling**: CSS Modules with MFUI patterns
+- **Build Tool**: Vite
+- **Type Safety**: TypeScript
 
-- Cannot be used as a base for implementing specific business logic.
-- Cannot be used as a base for implementations including SSR or SSG features.
+## Key Components
 
-### Prohibitions
+### Executive Dashboard (`/executive`)
+- Cost overview KPIs with variance indicators
+- Department breakdown table with drill-down navigation
+- Trend analysis charts
+- Export functionality for executive reports
 
-- TBD
+### Department Manager Portal (`/my-department`)
+- Personal department cost summary
+- Budget tracking and utilization metrics
+- Upcoming lease renewals
+- Space utilization analytics
 
-## Running this boilerplate
+### Allocation Configuration (`/allocation`)
+- Interactive allocation method selection
+- Real-time preview of cost distribution
+- Department mapping interface
+- Validation and audit trail
+
+### Report Center (`/reports`)
+- Report template library
+- Scheduled report management
+- Export center with multiple formats
+
+## Running the Prototype
 
 ### Prerequisites
 
 | Module                   | Version                              |
 | :----------------------- | :----------------------------------- |
-| Node.js                  | Refer to `.node-version` or `.nvmrc` |
-| [pnpm](https://pnpm.io/) | Refer to `package.json`              |
+| Node.js                  | 22.16.0                             |
+| [pnpm](https://pnpm.io/) | 10.11.0                             |
 
 ### Setup
 
-#### 1. Clone this repository
+#### 1. Install dependencies
 
 ```sh
-git clone https://github.com/moneyforward/frontend-boilerplate.git
+corepack enable # if pnpm is not installed
+pnpm install
 ```
 
-#### 2. Install dependencies
-
-```sh
-cd frontend-boilerplate/examples/react-router-lib
-corepack enable # if pnpm is not installed, execute this command
-pnpm install    # don't use npm or yarn
-```
-
-### Development
+#### 2. Start development server
 
 ```sh
 pnpm start
 ```
 
-Open [http://localhost:3001](http://localhost:3001) in your browser to verify that the application is running correctly.
+Open [http://localhost:3001](http://localhost:3001) to view the prototype.
 
-### UI Components Catalog
-
-This project uses [Storybook](https://storybook.js.org/) to generate a UI components catalog.
+### Development Commands
 
 ```sh
+# Start development with live reload
+pnpm start
+
+# Build for production
+pnpm build
+
+# Run Storybook component catalog
 pnpm storybook
-```
 
-### API Type Definitions Generation
+# Type checking
+pnpm typecheck
 
-This project provides a command to generate TypeScript type definitions from OpenAPI definition files stored in the `./api` directory.
-
-Run the following command to generate TypeScript type definitions:
-
-```sh
-pnpm typegen:api
-```
-
-When you run this command, it reads OpenAPI definition files located under the `./api` directory and generates TypeScript type definitions in the `./src/types` directory. By utilizing the generated type definitions, you can implement type-safe API client methods, ensuring better reliability and maintainability in your codebase.
-
-### Linting
-
-```sh
+# Linting and formatting
 pnpm lint
-```
+pnpm format
 
-### Testing
-
-```sh
+# Testing
 pnpm test
 ```
 
-## Main Technology Stack
+## Architecture
 
-| Category               | Technology                                                                                                                                                                      | ADR                                                                                                                                        |
-| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| Language               | [TypeScript](https://www.typescriptlang.org/)                                                                                                                                   | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0001-programming-language-for-web-frontend-development.md)   |
-| Development Runtime    | [Node.js](https://nodejs.org/)                                                                                                                                                  | wip                                                                                                                                        |
-| Web Frontend Library   | [React](https://react.dev/)                                                                                                                                                     | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0002-web-frontend-library-for-product-development.md)        |
-| Framework              | [React Router](https://reactrouter.com/start/library/installation) as Library                                                                                                   | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0015-framework-selection-for-web-frontend-development.md)    |
-| State Management       | [React Context](https://react.dev/learn/passing-data-deeply-with-context) + [Hooks](https://react.dev/reference/react/hooks) + [Constate](https://github.com/diegohaz/constate) | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0003-state-management-selection.md)                          |
-| Styling                | [CSS Modules](https://github.com/css-modules/css-modules)                                                                                                                       | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0004-styling-for-web-frontend-development.md)                |
-| UI Library             | [mfui](https://github.com/moneyforward/mfui)                                                                                                                                    | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0014-ui-library-for-web-frontend-development.md)             |
-| Node Package Manager   | [pnpm](https://pnpm.io/)                                                                                                                                                        | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0005-node-package-manager-for-web-frontend-development.md)   |
-| Unit Test Runner       | [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/)                                                                                                 | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0006-unit-test-runner-for-web-frontend-development.md)       |
-| E2E Test Runner        | [Playwright](https://playwright.dev/)                                                                                                                                           | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0007-e2e-test-framework-for-web-frontend-development.md)     |
-| UI Catalog             | [Storybook](https://storybook.js.org/)                                                                                                                                          | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0008-ui-catalog-for-web-frontend-development.md)             |
-| Visual Regression Test | [Chromatic](https://www.chromatic.com/storybook)                                                                                                                                | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0009-visual-regression-test-for-web-frontend-development.md) |
-| JavaScript Linter      | [ESLint](https://eslint.org/)                                                                                                                                                   | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0010-linter-for-typescript-for-web-frontend-development.md)  |
-| CSS Linter             | [Stylelint](https://stylelint.io/)                                                                                                                                              | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0011-linter-for-css-for-web-frontend-development.md)         |
-| Code Formatter         | [Prettier](https://prettier.io/)                                                                                                                                                | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0012-code-formatter-for-web-frontend-development.md)         |
-| Dependency Update      | [Renovate](https://docs.renovatebot.com/)                                                                                                                                       | [ADR](https://github.com/moneyforward/frontend-boilerplate/blob/main/docs/adr/0013-dependency-automation-for-web-frontend-development.md)  |
+### Directory Structure
 
-## Contact Information
+```
+src/
+├── routes/                 # Page components following React Router 7 patterns
+│   ├── executive/         # Executive Dashboard
+│   ├── my-department/     # Department Manager Portal  
+│   ├── allocation/        # Allocation Configuration
+│   └── reports/           # Report Center
+├── components/            # Reusable MFUI-based components
+│   ├── DepartmentCostTable/
+│   ├── AllocationPreviewCard/
+│   └── CostTrendChart/
+├── layouts/               # Layout components
+│   └── DepartmentReporting/
+├── api/                   # API client functions
+├── types/                 # TypeScript definitions
+└── styles/                # Global styles and CSS modules
+```
 
-If you have any questions or encounter any issues, please contact us at the following:
+### Design Patterns
 
-### Slack
+- **MFUI Component Library**: Exclusive use of MoneyForward design system components
+- **LA Frontend Patterns**: List pages, CRUD forms, detail pages, dashboard pages, sidepane workflows
+- **Responsive Design**: Mobile-first approach with MFUI breakpoints
+- **Progressive Disclosure**: Essential information first, drill-down for details
 
-- **Channel:** [#development_standards](https://moneyforward.slack.com/archives/C07KEPTDL69)
-- **Mention:** `@dpe-members`
+## User Flows
 
-### GitHub
+### Finance Director Workflow
+1. **Login** → Executive Dashboard
+2. **Review KPIs** → Identify high variance departments  
+3. **Drill Down** → Department → Location → Contract details
+4. **Export Report** → Executive summary for board presentation
 
-- **Repository:** [frontend-boilerplate](https://github.com/moneyforward/frontend-boilerplate/)
+### Department Manager Workflow  
+1. **Access Portal** → My Department costs
+2. **Review Budget** → Check variance and utilization
+3. **Plan Renewals** → Upcoming lease expirations
+4. **Request Changes** → Space modification workflow
+
+### Administrator Workflow
+1. **Configure Allocation** → Method selection and percentages
+2. **Preview Impact** → Real-time calculation validation
+3. **Save Configuration** → Audit trail and notifications
+4. **Monitor System** → Exception reporting and resolution
+
+## Implementation Notes
+
+Based on the comprehensive business requirements in `business_docs/`:
+
+- **Epic 1 Foundation**: Cost allocation engine with interactive configuration (Months 1-2)
+- **Epic 2 Core Reporting**: Executive dashboards and department portals (Months 2-3)  
+- **Epic 3 Advanced Analytics**: Space optimization and scenario modeling (Months 3-4)
+- **Epic 4 Workflow Integration**: ERP integration and approval workflows (Months 4-5)
+- **Epic 5 Portfolio Intelligence**: Multi-location optimization (Months 5-6)
+
+This prototype focuses on **Epic 1 & 2 functionality** to demonstrate the core user experience and technical feasibility.
+
+## Contact
+
+For questions about this prototype or the Department Reporting requirements:
+
+- **Business Requirements**: Refer to `business_docs/department-reporting-prd.md`
+- **Technical Specifications**: See `business_docs/department-reporting-mfui-frontend-spec.md`
+- **Epic Breakdown**: Review `business_docs/department-reporting-epics.md`

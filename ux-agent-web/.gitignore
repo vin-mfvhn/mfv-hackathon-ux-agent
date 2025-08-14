@@ -99,3 +99,7 @@ storybook-static
 
 # VRT snapshots
 __screenshots__
+
+# Uploaded files (keep the directory structure but ignore uploaded content)
+public/uploads/*
+!public/uploads/.gitkeep

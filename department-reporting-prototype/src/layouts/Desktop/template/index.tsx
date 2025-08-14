@@ -54,9 +54,9 @@ const RightPane: FC = () => {
 
   return (
     <>
-      <Link to={Paths.Posts.New} className={styles.linkButton}>
+      <Link to={Paths.Reports.Index} className={styles.linkButton}>
         <Add />
-        <Typography variant="condensedControlLabel">Add Post</Typography>
+        <Typography variant="condensedControlLabel">New Report</Typography>
       </Link>
 
       {profile ? <AccountMenu profile={profile} /> : null}
