@@ -1,0 +1,157 @@
+/* Executive Dashboard Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20);
+}
+
+.buttonLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Alerts Section */
+.alertsSection {
+  margin-bottom: 24px;
+}
+
+.alertsSection > * + * {
+  margin-top: 12px;
+}
+
+/* KPI Cards */
+.kpiRow {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.kpiCard {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+/* Department List */
+.departmentList {
+  margin-top: 16px;
+}
+
+.departmentItem {
+  padding: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+.departmentItem:last-child {
+  border-bottom: none;
+}
+
+.kpiValue {
+  font-size: 28px;
+  font-weight: var(--mfui-typography-font-weight-strong-body);
+  color: var(--mfui-color-blue-49);
+}
+
+/* Responsive KPI Layout */
+@media (width < 768px) {
+  .kpiRow {
+    flex-direction: column;
+  }
+  
+  .kpiCard {
+    min-height: 100px;
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .kpiRow {
+    flex-wrap: wrap;
+  }
+  
+  .kpiCard {
+    flex-basis: calc(50% - 8px);
+  }
+}
+
+/* Trend Analysis */
+.trendSection {
+  padding: 16px 0;
+}
+
+.trendChart {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--mfui-color-neutral-5);
+  border-radius: 8px;
+}
+
+.trendPoint {
+  text-align: center;
+  padding: 8px;
+}
+
+.trendPoint + .trendPoint {
+  border-left: 1px solid var(--mfui-color-neutral-20);
+}
+
+/* Mobile Responsiveness */
+@media (width < 768px) {
+  .pageHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .trendChart {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .trendPoint + .trendPoint {
+    border-left: none;
+    border-top: 1px solid var(--mfui-color-neutral-20);
+  }
+}
+
+/* DataGrid Enhancements */
+:global(.mfui-datagrid) {
+  --mfui-datagrid-header-background-color: var(--mfui-color-neutral-5);
+}
+
+/* Hover effects for interactive elements */
+.kpiCard:hover {
+  background-color: var(--mfui-color-neutral-5);
+  transition: background-color 0.2s ease;
+}
+
+/* Status indicators */
+.statusSuccess {
+  color: var(--mfui-color-signal-green);
+}
+
+.statusWarning {
+  color: var(--mfui-color-signal-yellow);
+}
+
+.statusError {
+  color: var(--mfui-color-signal-red);
+}

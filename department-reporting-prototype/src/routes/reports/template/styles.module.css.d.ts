@@ -1,0 +1,37 @@
+declare const styles: {
+  readonly "container": string;
+  readonly "exportActions": string;
+  readonly "exportCard": string;
+  readonly "exportPulse": string;
+  readonly "exporting": string;
+  readonly "filterItem": string;
+  readonly "filtersGrid": string;
+  readonly "filtersSummary": string;
+  readonly "historyItem": string;
+  readonly "historyList": string;
+  readonly "loading": string;
+  readonly "pageHeader": string;
+  readonly "quickActions": string;
+  readonly "quickExports": string;
+  readonly "scheduledItem": string;
+  readonly "scheduledList": string;
+  readonly "sectionHeader": string;
+  readonly "statusActive": string;
+  readonly "statusBadge": string;
+  readonly "statusInactive": string;
+  readonly "statusactive": string;
+  readonly "statuscompleted": string;
+  readonly "statusfailed": string;
+  readonly "statusinactive": string;
+  readonly "statuspending": string;
+  readonly "subtitle": string;
+  readonly "tabActive": string;
+  readonly "tabButton": string;
+  readonly "tabContent": string;
+  readonly "tabHeaders": string;
+  readonly "templateCard": string;
+  readonly "templateGrid": string;
+  readonly "templateMeta": string;
+};
+export = styles;
+

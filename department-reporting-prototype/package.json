@@ -1,7 +1,7 @@
 {
   "name": "department-reporting-prototype",
   "version": "1.0.0",
-  "description": "Department-Level Reporting & Cost Center Allocation Prototype",
+  "description": "Department-Level Reporting & Cost Center Allocation Prototype - Built with MFUI Components",
   "license": "UNLICENSED",
   "author": "@moneyforward/DPE",
   "type": "module",
