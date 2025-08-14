@@ -1,0 +1,102 @@
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.welcomePanel {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 2px solid #3b82f6;
+}
+
+.hrMessagePanel {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+}
+
+.progressSection {
+  padding-top: 16px;
+  border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.mainContent {
+  flex: 2;
+  min-width: 0;
+}
+
+.sidebar {
+  flex: 1;
+  min-width: 350px;
+}
+
+.taskItem {
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.taskItem:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.1);
+}
+
+.completedTask {
+  background-color: #f8fafc;
+  opacity: 0.7;
+}
+
+.taskContent {
+  flex: 1;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.contactsPanel {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 1px solid #10b981;
+}
+
+.resourcesPanel {
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+  border: 1px solid #ec4899;
+}
+
+.actionButtons {
+  padding-top: 16px;
+}
+
+.celebrationPanel {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 2px solid #f59e0b;
+  text-align: center;
+  animation: celebration 1s ease-in-out;
+}
+
+@keyframes celebration {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .sidebar {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .mainContent,
+  .sidebar {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "generic": {
+    "name": "Generic Onboarding Checklist",
+    "description": "Standard one-size-fits-all onboarding process",
+    "items": [
+      {
+        "id": "gen001",
+        "title": "Complete paperwork",
+        "description": "Fill out all required forms",
+        "priority": "high",
+        "estimated_time": "30 minutes",
+        "category": "administrative"
+      },
+      {
+        "id": "gen002", 
+        "title": "Set up accounts",
+        "description": "Create necessary system accounts",
+        "priority": "high",
+        "estimated_time": "45 minutes",
+        "category": "technical"
+      },
+      {
+        "id": "gen003",
+        "title": "Attend orientation",
+        "description": "General company orientation session",
+        "priority": "medium",
+        "estimated_time": "2 hours",
+        "category": "training"
+      },
+      {
+        "id": "gen004",
+        "title": "Meet your manager",
+        "description": "Introduction meeting with direct supervisor",
+        "priority": "high",
+        "estimated_time": "1 hour",
+        "category": "social"
+      },
+      {
+        "id": "gen005",
+        "title": "Review company policies",
+        "description": "Read through employee handbook",
+        "priority": "medium",
+        "estimated_time": "1 hour",
+        "category": "policy"
+      }
+    ]
+  },
+  "QA_Engineer": {
+    "name": "QA Engineer Specialized Onboarding",
+    "description": "Tailored onboarding for Quality Assurance Engineers",
+    "items": [
+      {
+        "id": "qa001",
+        "title": "Complete paperwork & QA team introduction",
+        "description": "Fill out required forms and get introduced to QA team structure",
+        "priority": "critical",
+        "estimated_time": "45 minutes",
+        "category": "administrative",
+        "ai_reasoning": "Personalized for QA team introduction vs generic paperwork"
+      },
+      {
+        "id": "qa002",
+        "title": "Set up QA testing tools accounts",
+        "description": "Create accounts for TestRail, Jira, Selenium, and PostMan",
+        "priority": "critical",
+        "estimated_time": "1 hour",
+        "category": "technical",
+        "ai_reasoning": "QA-specific tools vs generic system accounts"
+      },
+      {
+        "id": "qa003",
+        "title": "QA methodology & testing frameworks orientation",
+        "description": "Deep dive into MoneyForward's QA standards and testing approach",
+        "priority": "high",
+        "estimated_time": "3 hours",
+        "category": "training",
+        "ai_reasoning": "QA-focused training vs general company orientation"
+      },
+      {
+        "id": "qa004",
+        "title": "Meet Cherry (QA Manager) and QA buddy",
+        "description": "Introduction with QA Manager Cherry and assigned QA mentor",
+        "priority": "critical",
+        "estimated_time": "1.5 hours", 
+        "category": "social",
+        "ai_reasoning": "Role-specific manager and QA buddy vs generic manager meeting"
+      },
+      {
+        "id": "qa005",
+        "title": "Review QA Testing Guidelines & Quality Standards",
+        "description": "Study QA-specific policies and testing documentation",
+        "priority": "high",
+        "estimated_time": "2 hours",
+        "category": "policy",
+        "ai_reasoning": "QA-specific documentation vs generic company policies"
+      },
+      {
+        "id": "qa006",
+        "title": "Hands-on testing environment setup",
+        "description": "Configure local testing environment and run sample test cases",
+        "priority": "high",
+        "estimated_time": "2 hours",
+        "category": "technical",
+        "ai_reasoning": "QA-specific environment setup not in generic checklist"
+      },
+      {
+        "id": "qa007",
+        "title": "Shadow senior QA engineer on live testing",
+        "description": "Observe real testing scenarios and learn team workflow",
+        "priority": "medium",
+        "estimated_time": "4 hours",
+        "category": "training",
+        "ai_reasoning": "Role-specific shadowing experience"
+      }
+    ]
+  },
+  "AA_Engineer": {
+    "name": "Advanced Analytics Engineer Onboarding",
+    "description": "Specialized onboarding for Analytics team members",
+    "items": [
+      {
+        "id": "aa001",
+        "title": "Complete paperwork & AA team welcome",
+        "description": "Administrative setup with personalized AA team introduction",
+        "priority": "critical",
+        "estimated_time": "30 minutes",
+        "category": "administrative",
+        "ai_reasoning": "AA team context vs generic paperwork"
+      },
+      {
+        "id": "aa002",
+        "title": "Set up analytics toolchain access",
+        "description": "Configure access to Tableau, BigQuery, Databricks, and Jupyter environments",
+        "priority": "critical",
+        "estimated_time": "1.5 hours",
+        "category": "technical",
+        "ai_reasoning": "Analytics-specific tools vs generic accounts"
+      },
+      {
+        "id": "aa003",
+        "title": "Data analytics methodology training",
+        "description": "Learn MoneyForward's approach to data science and business intelligence",
+        "priority": "high",
+        "estimated_time": "4 hours",
+        "category": "training",
+        "ai_reasoning": "Analytics-focused training vs general orientation"
+      },
+      {
+        "id": "aa004",
+        "title": "Meet Dave (AA Manager) and analytics mentor",
+        "description": "Connect with AA Manager Dave and assigned senior analytics buddy",
+        "priority": "critical",
+        "estimated_time": "1.5 hours",
+        "category": "social",
+        "ai_reasoning": "Analytics team leadership vs generic manager meeting"
+      },
+      {
+        "id": "aa005",
+        "title": "Review data privacy & analytics standards",
+        "description": "Study data governance, privacy protocols, and ML development guidelines",
+        "priority": "critical",
+        "estimated_time": "2.5 hours",
+        "category": "policy",
+        "ai_reasoning": "Data-specific compliance vs general policies"
+      },
+      {
+        "id": "aa006",
+        "title": "Explore current analytics projects",
+        "description": "Review ongoing projects and understand team's business impact areas",
+        "priority": "high",
+        "estimated_time": "3 hours",
+        "category": "technical",
+        "ai_reasoning": "Analytics project context not in generic checklist"
+      },
+      {
+        "id": "aa007",
+        "title": "Set up development environment",
+        "description": "Configure Python, ML libraries, and connect to data sources",
+        "priority": "high",
+        "estimated_time": "2 hours",
+        "category": "technical",
+        "ai_reasoning": "Analytics-specific development setup"
+      }
+    ]
+  },
+  "SCI_Senior": {
+    "name": "Software & Cloud Infrastructure Senior Engineer Onboarding",
+    "description": "Advanced onboarding for senior SCI team members",
+    "items": [
+      {
+        "id": "sci001",
+        "title": "Senior-level paperwork & SCI architecture overview",
+        "description": "Administrative setup with comprehensive SCI system architecture briefing",
+        "priority": "critical",
+        "estimated_time": "1 hour",
+        "category": "administrative",
+        "ai_reasoning": "Senior-level introduction with architecture context"
+      },
+      {
+        "id": "sci002", 
+        "title": "Configure senior engineer cloud access",
+        "description": "Set up AWS Console, GitHub admin access, Kubernetes clusters, and Datadog monitoring",
+        "priority": "critical",
+        "estimated_time": "2 hours",
+        "category": "technical",
+        "ai_reasoning": "Senior-level cloud infrastructure access vs basic accounts"
+      },
+      {
+        "id": "sci003",
+        "title": "Cloud architecture & engineering standards deep-dive",
+        "description": "Comprehensive review of infrastructure patterns, security practices, and technical standards",
+        "priority": "critical",
+        "estimated_time": "5 hours",
+        "category": "training",
+        "ai_reasoning": "Senior-level technical training vs general orientation"
+      },
+      {
+        "id": "sci004",
+        "title": "Meet Ness (SCI Manager) and technical leadership team",
+        "description": "Introduction with SCI Manager Ness, Bamboo, and other senior technical leads",
+        "priority": "critical",
+        "estimated_time": "2 hours",
+        "category": "social",
+        "ai_reasoning": "Senior-level introductions with technical leadership"
+      },
+      {
+        "id": "sci005",
+        "title": "Review engineering standards & security protocols",
+        "description": "Study advanced engineering practices, API guidelines, and security best practices",
+        "priority": "high",
+        "estimated_time": "3 hours",
+        "category": "policy",
+        "ai_reasoning": "Engineering-specific standards vs general policies"
+      },
+      {
+        "id": "sci006",
+        "title": "Infrastructure monitoring & incident response training",
+        "description": "Learn monitoring systems, alerting, and senior-level incident response procedures",
+        "priority": "high", 
+        "estimated_time": "2.5 hours",
+        "category": "training",
+        "ai_reasoning": "Senior engineer responsibilities not in generic checklist"
+      },
+      {
+        "id": "sci007",
+        "title": "Current infrastructure projects review",
+        "description": "Understand ongoing infrastructure initiatives and scalability challenges",
+        "priority": "high",
+        "estimated_time": "3 hours",
+        "category": "technical",
+        "ai_reasoning": "Senior-level project context and technical ownership"
+      },
+      {
+        "id": "sci008",
+        "title": "Set up development & deployment environments",
+        "description": "Configure local development, staging access, and CI/CD pipeline permissions",
+        "priority": "medium",
+        "estimated_time": "1.5 hours",
+        "category": "technical",
+        "ai_reasoning": "Senior engineer development workflow setup"
+      }
+    ]
+  },
+  "HRS_Manager": {
+    "name": "HR Systems Manager Leadership Onboarding",
+    "description": "Executive-level onboarding for HRS department manager",
+    "items": [
+      {
+        "id": "hrs001",
+        "title": "Executive paperwork & HRS department strategy briefing",
+        "description": "Manager-level administrative setup with comprehensive department overview and strategic goals",
+        "priority": "critical",
+        "estimated_time": "1.5 hours",
+        "category": "administrative",
+        "ai_reasoning": "Executive-level onboarding with strategic context"
+      },
+      {
+        "id": "hrs002",
+        "title": "Configure manager-level HRIS access",
+        "description": "Set up administrative access to BambooHR, Workday, Teams admin, and manager dashboards",
+        "priority": "critical",
+        "estimated_time": "1 hour",
+        "category": "technical",
+        "ai_reasoning": "Manager-level system access vs individual contributor accounts"
+      },
+      {
+        "id": "hrs003",
+        "title": "HR leadership & compliance training",
+        "description": "Manager-focused training on employment law, compliance requirements, and leadership responsibilities",
+        "priority": "critical",
+        "estimated_time": "6 hours",
+        "category": "training",
+        "ai_reasoning": "Manager-level compliance training vs general orientation"
+      },
+      {
+        "id": "hrs004",
+        "title": "Meet senior leadership & HR stakeholders",
+        "description": "Introduction meetings with C-level executives, legal team, and key HR partners",
+        "priority": "critical",
+        "estimated_time": "3 hours",
+        "category": "social",
+        "ai_reasoning": "Executive-level introductions vs standard manager meeting"
+      },
+      {
+        "id": "hrs005",
+        "title": "Review HR policies, legal requirements & team structure",
+        "description": "Comprehensive review of HR policies, legal compliance, and current team composition/performance",
+        "priority": "critical",
+        "estimated_time": "4 hours",
+        "category": "policy",
+        "ai_reasoning": "Manager-level policy ownership vs general policy review"
+      },
+      {
+        "id": "hrs006",
+        "title": "Budget & resource planning overview",
+        "description": "Review department budget, resource allocation, and upcoming hiring/project plans",
+        "priority": "high",
+        "estimated_time": "2 hours",
+        "category": "administrative",
+        "ai_reasoning": "Manager-level financial and resource responsibilities"
+      },
+      {
+        "id": "hrs007",
+        "title": "Current HR technology initiatives review",
+        "description": "Understand ongoing technology projects, system integrations, and technical roadmap",
+        "priority": "high",
+        "estimated_time": "2.5 hours",
+        "category": "technical",
+        "ai_reasoning": "Manager-level strategic technology overview"
+      },
+      {
+        "id": "hrs008",
+        "title": "Team one-on-ones & performance review setup",
+        "description": "Schedule initial meetings with all direct reports and review performance management processes",
+        "priority": "high",
+        "estimated_time": "4 hours",
+        "category": "social",
+        "ai_reasoning": "Manager-specific team management responsibilities"
+      }
+    ]
+  }
+}

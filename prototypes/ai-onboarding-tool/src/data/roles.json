@@ -1,0 +1,85 @@
+{
+  "Engineer": {
+    "level": "3",
+    "title": "Software Engineer",
+    "description": "Develops and maintains software applications and systems",
+    "responsibilities": [
+      "Write clean, maintainable, and efficient code",
+      "Participate in code reviews and technical discussions", 
+      "Collaborate with team members on feature development",
+      "Debug and troubleshoot technical issues",
+      "Follow development best practices and coding standards"
+    ],
+    "skills": [
+      "Programming languages (specific to team)",
+      "Version control (Git)",
+      "Testing frameworks",
+      "Agile development methodologies"
+    ],
+    "checklist_priority": "high",
+    "buddy_preference": "same_role"
+  },
+  "Senior": {
+    "level": "3",
+    "title": "Senior Engineer",
+    "description": "Experienced engineer providing technical leadership and mentorship",
+    "responsibilities": [
+      "Lead technical design and architecture decisions",
+      "Mentor junior team members",
+      "Drive technical innovation and best practices",
+      "Collaborate with cross-functional teams",
+      "Review and approve technical specifications"
+    ],
+    "skills": [
+      "Advanced programming and system design",
+      "Technical leadership and mentorship",
+      "Architecture and design patterns",
+      "Performance optimization",
+      "Cross-team collaboration"
+    ],
+    "checklist_priority": "high",
+    "buddy_preference": "senior_or_manager"
+  },
+  "Manager": {
+    "level": "5",
+    "title": "Engineering Manager",
+    "description": "Leads engineering teams and manages technical projects",
+    "responsibilities": [
+      "Manage team performance and development",
+      "Coordinate cross-team technical initiatives",
+      "Make technical and strategic decisions",
+      "Budget and resource planning",
+      "Stakeholder communication and reporting"
+    ],
+    "skills": [
+      "Team leadership and management",
+      "Technical project management", 
+      "Strategic planning and execution",
+      "Cross-functional collaboration",
+      "Performance management"
+    ],
+    "checklist_priority": "critical",
+    "buddy_preference": "manager_level"
+  },
+  "Principal": {
+    "level": "4", 
+    "title": "Principal Engineer",
+    "description": "Senior technical expert providing architectural leadership",
+    "responsibilities": [
+      "Drive technical vision and strategy",
+      "Lead complex architectural initiatives",
+      "Mentor senior engineers and technical leads",
+      "Influence technical decisions across multiple teams",
+      "Research and evaluate new technologies"
+    ],
+    "skills": [
+      "Expert-level technical knowledge",
+      "System architecture and design",
+      "Technical strategy and vision",
+      "Cross-team technical leadership",
+      "Technology evaluation and adoption"
+    ],
+    "checklist_priority": "critical",
+    "buddy_preference": "principal_or_director"
+  }
+}
