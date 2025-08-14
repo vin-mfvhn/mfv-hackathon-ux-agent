@@ -1,0 +1,39 @@
+users:
+  get:
+    tags:
+      - Users
+    description: Get all users
+    operationId: getAllUsers
+    responses:
+      '200':
+        description: A list of users
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/user.yaml#/UsersList'
+      '500':
+        description: Server error
+
+users_{id}:
+  get:
+    tags:
+      - Users
+    description: Get a user by ID
+    operationId: getUserById
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: A single user
+        content:
+          application/json:
+            schema:
+              $ref: '../components/schemas/user.yaml#/User'
+      '404':
+        description: User not found
+      '500':
+        description: Server error

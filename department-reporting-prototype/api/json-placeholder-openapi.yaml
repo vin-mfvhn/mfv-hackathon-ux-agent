@@ -1,0 +1,54 @@
+openapi: 3.0.0
+
+info:
+  version: 1.0.0
+  title: JSON Placeholder API
+  description: A fake online REST API for testing and prototyping.
+
+servers:
+  - url: https://jsonplaceholder.typicode.com
+
+paths:
+  /posts:
+    $ref: './paths/post.yaml#/posts'
+  /posts/{id}:
+    $ref: './paths/post.yaml#/posts_{id}'
+  /comments:
+    $ref: './paths/comment.yaml#/comments'
+  /comments/{id}:
+    $ref: './paths/comment.yaml#/comments_{id}'
+  /users:
+    $ref: './paths/user.yaml#/users'
+  /users/{id}:
+    $ref: './paths/user.yaml#/users_{id}'
+  /todos:
+    $ref: './paths/todo.yaml#/todos'
+  /todos/{id}:
+    $ref: './paths/todo.yaml#/todos_{id}'
+
+components:
+  schemas:
+    PostsList:
+      $ref: './components/schemas/post.yaml#/PostsList'
+    Post:
+      $ref: './components/schemas/post.yaml#/Post'
+    PostRequest:
+      $ref: './components/schemas/post.yaml#/PostRequest'
+    PostResponse:
+      $ref: './components/schemas/post.yaml#/PostResponse'
+    CommentList:
+      $ref: './components/schemas/comment.yaml#/CommentList'
+    Comment:
+      $ref: './components/schemas/comment.yaml#/Comment'
+    UsersList:
+      $ref: './components/schemas/user.yaml#/UsersList'
+    User:
+      $ref: './components/schemas/user.yaml#/User'
+    Address:
+      $ref: './components/schemas/user.yaml#/Address'
+    Company:
+      $ref: './components/schemas/user.yaml#/Company'
+    TodosList:
+      $ref: './components/schemas/todo.yaml#/TodosList'
+    Todo:
+      $ref: './components/schemas/todo.yaml#/Todo'

@@ -19,7 +19,19 @@ format:
 
 ## Execution Steps
 
-### Step 1: Validate Project
+### Step 1: Setup Project Foundation
+#### 1a. Copy React Router Library
+Copy the react-router-lib to prototypes directory for use:
+```bash
+# Ensure prototypes directory exists
+mkdir -p prototypes/
+
+# Copy react-router-lib to prototypes directory
+cp -r react-router-lib/ prototypes/
+echo "✓ Copied react-router-lib to prototypes directory"
+```
+
+#### 1b. Validate Project
 - Verify project_path exists and contains a valid package.json
 - Check for required build scripts in package.json
 - Confirm project dependencies are installed
@@ -90,6 +102,7 @@ pnpm run build && pnpm run preview || npm run build && npm run preview
 - Validate that the build is deployment-ready
 
 ## Success Criteria
+- [ ] React-router-lib successfully copied to prototypes directory
 - [ ] All pre-build quality checks pass
 - [ ] Build completes without errors
 - [ ] Build output directory contains expected files

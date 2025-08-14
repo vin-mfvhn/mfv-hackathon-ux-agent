@@ -1,0 +1,24 @@
+CommentList:
+  type: array
+  items:
+    $ref: '#/Comment'
+
+Comment:
+  type: object
+  required:
+    - postId
+    - id
+    - name
+    - email
+    - body
+  properties:
+    postId:
+      type: integer
+    id:
+      type: integer
+    name:
+      type: string
+    email:
+      type: string
+    body:
+      type: string
