@@ -1,0 +1,178 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--color-neutral-background-primary);
+}
+
+.conversationContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-16) var(--spacing-24);
+  padding-bottom: var(--spacing-8);
+}
+
+.messagesList {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.messageWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.userMessage {
+  justify-content: flex-end;
+}
+
+.assistantMessage {
+  justify-content: flex-start;
+}
+
+.messagePanel {
+  max-width: 70%;
+  min-width: 200px;
+  padding: var(--spacing-12) var(--spacing-16);
+  border-radius: var(--border-radius-8);
+  box-shadow: var(--shadow-1);
+}
+
+.userMessage .messagePanel {
+  background-color: var(--color-primary-sub-background-none);
+  border: 1px solid var(--color-primary-border-none);
+}
+
+.assistantMessage .messagePanel {
+  background-color: var(--color-neutral-background-secondary);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-4);
+}
+
+.timestamp {
+  color: var(--color-neutral-content-secondary);
+}
+
+.attachment {
+  color: var(--color-neutral-content-secondary);
+  font-style: italic;
+}
+
+.inputContainer {
+  padding: var(--spacing-16) var(--spacing-24);
+  border-top: 1px solid var(--color-neutral-border);
+  background-color: var(--color-neutral-background-primary);
+}
+
+.inputPanel {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--spacing-12);
+  border-radius: var(--border-radius-8);
+  box-shadow: var(--shadow-1);
+  background-color: var(--color-neutral-background-secondary);
+}
+
+.attachmentsContainer {
+  padding: var(--spacing-8);
+  background-color: var(--color-neutral-background-tertiary);
+  border-radius: var(--border-radius-4);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.attachmentChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-2) var(--spacing-6);
+  background-color: var(--color-neutral-background-primary);
+  border-radius: var(--border-radius-16);
+  border: 1px solid var(--color-neutral-border);
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  color: var(--color-neutral-content-secondary);
+  font-size: var(--font-size-body);
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-2);
+}
+
+.removeButton:hover {
+  background-color: var(--color-neutral-background-hover);
+  color: var(--color-signal-red-content);
+}
+
+.textInputContainer {
+  flex: 1;
+}
+
+.textInput {
+  min-height: 40px;
+  max-height: 120px;
+  resize: none;
+}
+
+.attachButton,
+.sendButton {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .conversationContainer {
+    padding: var(--spacing-8) var(--spacing-12);
+  }
+  
+  .inputContainer {
+    padding: var(--spacing-8) var(--spacing-12);
+  }
+  
+  .messagePanel {
+    max-width: 85%;
+  }
+  
+  .messagesList {
+    max-width: none;
+  }
+  
+  .inputPanel {
+    max-width: none;
+  }
+}
+
+/* Loading animation */
+@keyframes thinking {
+  0%, 60%, 100% {
+    opacity: 0.3;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+.assistantMessage .messagePanel:has(.thinking) {
+  animation: thinking 1.5s ease-in-out infinite;
+}
