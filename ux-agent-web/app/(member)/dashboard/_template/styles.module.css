@@ -1,201 +1,256 @@
-/* ChatGPT-like UI using MFUI design tokens */
+/* ChatGPT-like interface styling */
 
-.chatContainer {
-  height: 100vh;
+/* Main container */
+.container {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--color-neutral-background-primary);
 }
 
-.messagesArea {
+/* Conversation container */
+.conversationContainer {
   flex: 1;
   overflow-y: auto;
-  padding: var(--spacing-24) var(--spacing-16);
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
 }
 
 .messagesList {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 768px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.messageRow {
+/* Message styling */
+.messageWrapper {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: var(--spacing-24);
 }
 
-.messageContent {
-  width: 100%;
-  max-width: 700px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-8);
+.messageWrapper.userMessage {
+  justify-content: flex-end;
+}
+
+.messageWrapper.assistantMessage {
+  justify-content: flex-start;
+}
+
+.messagePanel {
+  max-width: 85%;
+  min-width: 200px;
+  border: none !important;
+  border-radius: 18px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  padding: 16px 20px !important;
+}
+
+.userMessage .messagePanel {
+  background: #007aff !important;
+  color: white;
+}
+
+.assistantMessage .messagePanel {
+  background: white !important;
+  color: #374151;
+  border: 1px solid #e5e7eb !important;
 }
 
 .messageHeader {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 8px;
 }
 
-.sender {
-  color: var(--color-neutral-content-primary);
-  font-weight: var(--font-weight-medium);
-}
-
-.messageBody {
-  background: var(--color-neutral-background-secondary);
-  border-radius: var(--border-radius-12);
-  padding: var(--spacing-16) var(--spacing-20);
-  border: 1px solid var(--color-neutral-border);
-  box-shadow: var(--shadow-1);
-}
-
-.messageText {
-  line-height: var(--line-height-relaxed);
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-.attachmentsList {
-  margin-top: var(--spacing-12);
-  padding-top: var(--spacing-12);
-  border-top: 1px solid var(--color-neutral-border-secondary);
-}
-
-.attachmentItem {
+.senderInfo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-6);
-  color: var(--color-neutral-content-secondary);
+  gap: 8px;
 }
 
-/* Input Panel */
-.inputPanel {
-  background: var(--color-neutral-background-primary);
-  border-top: 1px solid var(--color-neutral-border);
-  padding: var(--spacing-20) var(--spacing-16);
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
-  box-shadow: var(--shadow-2);
+.aiIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
 }
 
-.attachmentTags {
-  padding: var(--spacing-8);
-  background: var(--color-neutral-background-tertiary);
-  border-radius: var(--border-radius-8);
-  border: 1px solid var(--color-neutral-border);
+.userMessage .messageHeader * {
+  color: white !important;
 }
 
-.fileDropZone {
-  min-height: 60px;
-  background: var(--color-neutral-background-tertiary);
-  border: 2px dashed var(--color-neutral-border);
-  border-radius: var(--border-radius-8);
-  display: flex;
+.timestamp {
+  opacity: 0.7;
+  font-size: 12px !important;
+}
+
+/* Attachments */
+.attachment {
+  display: inline-flex;
   align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 12px !important;
+}
+
+.userMessage .attachment {
+  background: rgba(255, 255, 255, 0.2);
+  color: white !important;
+}
+
+.assistantMessage .attachment {
+  background: #f3f4f6;
+  color: #6b7280 !important;
+}
+
+/* Input container */
+.inputContainer {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
   justify-content: center;
-  transition: all 0.2s ease;
 }
 
-.fileDropZone:hover {
-  border-color: var(--color-primary-border-none);
-  background: var(--color-primary-sub-background-none);
+.inputPanel {
+  max-width: 768px;
+  width: 100%;
+  background: white !important;
+  border-radius: 24px !important;
+  border: 1px solid #d1d5db !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  padding: 12px 16px !important;
 }
 
-.dropZoneText {
-  color: var(--color-neutral-content-secondary);
+/* Attachments container */
+.attachmentsContainer {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f3f4f6;
 }
 
-.inputRow {
-  gap: var(--spacing-12);
+.attachmentChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  background: #f3f4f6;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.removeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.removeButton:hover {
+  color: #ef4444;
+}
+
+/* Input controls */
+.attachButton,
+.sendButton {
+  border-radius: 12px !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.attachButton {
+  background: transparent !important;
+  color: #6b7280 !important;
+  border: none !important;
+}
+
+.attachButton:hover {
+  background: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+.sendButton {
+  background: #007aff !important;
+  color: white !important;
+  border: none !important;
+}
+
+.sendButton:disabled {
+  background: #d1d5db !important;
+  color: #9ca3af !important;
 }
 
 .textInputContainer {
   flex: 1;
+  margin: 0 8px;
 }
 
 .textInput {
-  min-height: 44px;
-  max-height: 200px;
-  resize: none;
-  border-radius: var(--border-radius-8);
-  border: 1px solid var(--color-neutral-border);
-  padding: var(--spacing-12) var(--spacing-16);
-  font-family: var(--font-family-base);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-normal);
-  background: var(--color-neutral-background-secondary);
-  transition: border-color 0.2s ease;
+  background: transparent !important;
+  border: none !important;
+  width: 100% !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  resize: none !important;
+  outline: none !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
 }
 
-.textInput:focus {
-  border-color: var(--color-primary-border-none);
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary-sub-background-none);
+.textInput::placeholder {
+  color: #9ca3af !important;
 }
 
-.sendButton {
-  height: 44px;
-  min-width: 80px;
-  border-radius: var(--border-radius-8);
-  font-weight: var(--font-weight-medium);
-}
-
-/* Responsive Design */
+/* Responsive design */
 @media (max-width: 768px) {
-  .messagesArea {
-    padding: var(--spacing-16) var(--spacing-12);
-  }
-  
-  .inputPanel {
-    padding: var(--spacing-16) var(--spacing-12);
-  }
-  
-  .messagesList {
-    max-width: none;
-  }
-  
-  .messageContent {
-    max-width: none;
+  .conversationContainer {
+    padding: 16px 12px;
   }
 
-  .inputRow {
-    flex-direction: column;
-    gap: var(--spacing-12);
+  .inputContainer {
+    padding: 16px 12px;
   }
 
-  .sendButton {
-    width: 100%;
+  .messagePanel {
+    max-width: 95%;
   }
 }
 
-/* Scrollbar styling for webkit browsers */
-.messagesArea::-webkit-scrollbar {
+/* Scrollbar styling */
+.conversationContainer::-webkit-scrollbar {
   width: 6px;
 }
 
-.messagesArea::-webkit-scrollbar-track {
-  background: var(--color-neutral-background-secondary);
+.conversationContainer::-webkit-scrollbar-track {
+  background: #f7f7f8;
 }
 
-.messagesArea::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-border);
-  border-radius: var(--border-radius-4);
+.conversationContainer::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
 }
 
-.messagesArea::-webkit-scrollbar-thumb:hover {
-  background: var(--color-neutral-content-tertiary);
+.conversationContainer::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
-/* Animation for new messages */
-@keyframes fadeIn {
+/* Smooth animations */
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -203,12 +258,6 @@
   }
 }
 
-.messageRow {
-  animation: fadeIn 0.3s ease-out;
-}
-
-/* Loading state styling */
-.messageRow:has(.progressIndicator) .messageBody {
-  background: var(--color-neutral-background-tertiary);
-  border: 1px dashed var(--color-neutral-border);
+.messageWrapper {
+  animation: slideIn 0.3s ease-out;
 }

@@ -9,8 +9,9 @@ import {
   VStack,
 } from '@moneyforward/mfui-components';
 import { Clip, Help } from '@moneyforward/mfui-icons-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from './styles.module.css';
+import aiIcon from './icon-ai.png';
 
 interface Message {
   id: string;
@@ -33,6 +34,15 @@ export const ChatTemplate = () => {
   const [attachedFiles, setAttachedFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleSubmit = async () => {
     if (!inputValue.trim() && attachedFiles.length === 0) return;
@@ -103,9 +113,18 @@ export const ChatTemplate = () => {
               <Panel className={styles.messagePanel}>
                 <VStack gap="0-1of4">
                   <div className={styles.messageHeader}>
-                    <Typography variant="strong-body">
-                      {message.role === 'user' ? 'You' : 'Assistant'}
-                    </Typography>
+                    <div className={styles.senderInfo}>
+                      {message.role === 'assistant' && (
+                        <img 
+                          src={aiIcon.src} 
+                          alt="AI" 
+                          className={styles.aiIcon}
+                        />
+                      )}
+                      <Typography variant="strong-body">
+                        {message.role === 'user' ? 'You' : 'Assistant'}
+                      </Typography>
+                    </div>
                     <Typography variant="help-message" className={styles.timestamp}>
                       {message.timestamp.toLocaleTimeString()}
                     </Typography>
@@ -134,6 +153,7 @@ export const ChatTemplate = () => {
               </Panel>
             </div>
           )}
+          <div ref={messagesEndRef} />
         </VStack>
       </div>
 
