@@ -6,15 +6,16 @@
 
 MFUI (MoneyForward UI) is a React component library following UIDS v2 compliance and accessibility requirements. This knowledge base provides curated information for AI agents to make informed component selection and usage recommendations.
 
-## Component Library (49+ Components)
+## Component Library (50+ Components)
 
 ### Layout Components
-- **PageLayout**: Main page structure with header slot, content area, back navigation
 - **Panel**: Container component with consistent padding and styling
 - **Stack**: Flexbox utility (VStack/HStack) for consistent spacing
 - **GlobalHeader**: Application header with user navigation and branding
 - **MainNavigation**: Primary navigation with responsive behavior
 - **SubNavigation**: Secondary navigation for section-specific links
+- **PageHeader**: Page header component with heading and action slots
+- **KeyValue**: Key-value pair display with consistent layout
 
 ### Form Controls
 - **Button**: Primary interactive element with variants (primary, secondary, sizes)
@@ -24,27 +25,35 @@ MFUI (MoneyForward UI) is a React component library following UIDS v2 compliance
 - **SelectBox**: Dropdown selection with search and grouping
 - **MultipleSelectBox**: Multi-selection dropdown with search
 - **Checkbox**: Individual selection with validation states
+- **CheckboxGroup**: Group of related checkboxes
 - **RadioButton**: Mutually exclusive selection
+- **RadioGroup**: Group of related radio buttons
 - **DatePicker**: Date selection with calendar interface
+- **DateRangePicker**: Date range selection with calendar interface
 - **MonthPicker**: Month selection interface
+- **MonthRangePicker**: Month range selection interface
 - **SearchBox**: Optimized text input for search functionality
 - **FileDropZone**: File upload with drag-and-drop
+- **FileBox**: File input component with file display
+- **FilterSelectBox**: Specialized select for filtering
+- **FilterTrigger**: Filter activation controls
+- **MultipleFilterSelectBox**: Multi-selection filter component
 
 ### Data Display
 - **DataGrid**: Complex table with sorting, filtering, fixed columns
 - **DisplayTable**: Read-only table for data presentation
-- **KeyValue**: Key-value pair display with consistent layout
 - **Tag**: Small label for categorization
 - **Badge**: Status indicator with semantic colors
+- **StatusLabel**: Status indication with semantic styling
 - **Typography**: Text display with semantic variants
 - **Heading**: Structured heading hierarchy
 - **Pagination**: Page navigation with items per page controls
 - **ProgressIndicator**: Loading and progress states
+- **Skeleton**: Loading state placeholders
 
 ### Navigation
 - **Tabs**: Content organization with tab switching
 - **TextLink**: Styled links with hover and focus states
-- **Breadcrumb**: Navigation path indication
 
 ### Feedback
 - **Dialog**: Modal dialogs for forms and confirmations
@@ -56,16 +65,14 @@ MFUI (MoneyForward UI) is a React component library following UIDS v2 compliance
 ### Interactive
 - **DropdownMenu**: Context menus and action lists
 - **SidePane**: Slide-out panels for secondary content
+- **EmbeddedSidePane**: Embedded slide-out panels
 - **Popover**: Positioned floating content
 - **Disclosure**: Collapsible content sections
+- **FocusIndicator**: Focus visibility enhancement component
 
 ### Specialized
 - **CheckboxCard**: Enhanced checkbox with card styling
 - **RadioButtonCard**: Enhanced radio button with card styling
-- **StatusLabel**: Status indication with semantic styling
-- **FilterSelectBox**: Specialized select for filtering
-- **FilterTrigger**: Filter activation controls
-- **Skeleton**: Loading state placeholders
 
 ## Design Tokens System
 
@@ -89,16 +96,17 @@ MFUI (MoneyForward UI) is a React component library following UIDS v2 compliance
 ```
 
 ### Typography Tokens
+- **Typography Styles**: Complete semantic styles including page-heading, section-heading, content-heading, body variants
 - **Font Families**: System font stack with fallbacks
-- **Font Sizes**: Consistent scale from small to large
+- **Font Sizes**: Consistent scale from help-message to page-heading-1
 - **Font Weights**: Regular, medium, bold variants
 - **Line Heights**: Optimized for readability
-- **Typography Variants**: strongBody, condensedBody, caption
+- **Typography Variants**: body, strong-body, condensed-body, help-message, control-label, amount variants
 
 ### Spacing Tokens
-- **Padding**: Consistent internal spacing (4px, 8px, 12px, 16px, 24px, 32px)
-- **Margin**: External spacing system
-- **Gap**: Flexbox gap values for Stack components
+- **Layout Grid**: Grid-based spacing system with horizontal (14px base) and vertical (24px base) scales
+- **Spacing Scale**: Semantic spacing for icon-text, key-value, inline, container, paragraph, and section layouts
+- **Fractional Scale**: Precise spacing with fractions (0.25x, 0.5x, 1.5x, etc.)
 - **Border Radius**: Consistent corner rounding
 - **Dimension**: Component sizing standards
 
@@ -111,13 +119,13 @@ MFUI (MoneyForward UI) is a React component library following UIDS v2 compliance
 
 ### Component Structure Pattern
 ```typescript
-// Standard MFUI component structure
+// Standard MFUI component structure with PandaCSS styling
 export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <element 
         ref={ref}
-        className={classNames(styles.component, className)}
+        className={cx(styles.component(), className)}
         {...props}
       >
         {children}
@@ -127,11 +135,11 @@ export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
 );
 ```
 
-### CSS Modules Pattern
-- Use CSS Modules for component-specific styling
-- Import design tokens as CSS custom properties
-- Follow BEM-like naming conventions within modules
-- Avoid inline styles; prefer CSS classes
+### PandaCSS Pattern
+- Use PandaCSS for utility-first styling with type safety
+- Implement slot recipes for complex component styling
+- Design tokens automatically available as CSS custom properties
+- Avoid inline styles; prefer PandaCSS utilities and recipes
 
 ### TypeScript Integration
 - All components use TypeScript with strict types
@@ -140,10 +148,11 @@ export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
 - Export types for consumption by applications
 
 ### Testing Pattern
-- Unit tests for complex components using Vitest
+- Unit tests for complex components using Vitest and Testing Library
 - Storybook stories for visual documentation and testing
-- Testing Library for user interaction testing
-- MSW for API mocking in integration tests
+- Use composeStories to reuse Storybook stories in tests
+- Accessibility-first testing with semantic queries (getByRole, getByLabelText)
+- Follow AAA pattern (Arrange-Act-Assert) in test structure
 
 ### Accessibility Requirements
 - WCAG 2.2 Level A compliance
@@ -194,12 +203,12 @@ export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
 #### Form Layout Pattern:
 ```jsx
 <form>
-  <VStack gap={12}>
+  <VStack gap="paragraph.vertical">
     <KeyValue
       gridTemplateColumns="160px 1fr"
       keyItem={<label>Field Label</label>}
       valueItem={
-        <VStack gap={4}>
+        <VStack gap="0-1of4">
           <TextBox value={value} onChange={onChange} />
           {error && <HelpMessage messageType="error">{error}</HelpMessage>}
         </VStack>
@@ -229,18 +238,14 @@ export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
 
 #### Page Header Pattern:
 ```jsx
-<PageLayout
-  headerSlot={
-    <PageLayout.Header
-      headingSlot="Page Title"
-      actionSlot={<Button priority="primary">Action</Button>}
-      backButtonProps={{ href: "/parent" }}
-      showBackButton
-    />
-  }
->
-  <PageContent />
-</PageLayout>
+<PageHeader>
+  <HStack gap="key-value.horizontal" justifyContent="space-between">
+    <Heading tag="h1" variant="pageHeading1">
+      Page Title
+    </Heading>
+    <Button priority="primary">Action</Button>
+  </HStack>
+</PageHeader>
 ```
 
 ## Component Decision Tree
@@ -270,21 +275,22 @@ export const ComponentName = forwardRef<HTMLElement, ComponentProps>(
 5. **Breadcrumbs** → Custom breadcrumb pattern
 
 ### For Layout:
-1. **Full page structure** → `PageLayout`
-2. **Content grouping** → `Panel`
-3. **Vertical spacing** → `VStack`
-4. **Horizontal spacing** → `HStack`
-5. **Secondary content** → `SidePane`
+1. **Content grouping** → `Panel`
+2. **Vertical spacing** → `VStack`
+3. **Horizontal spacing** → `HStack`
+4. **Page headers** → `PageHeader`
+5. **Secondary content** → `SidePane` or `EmbeddedSidePane`
 
 ## Common Anti-Patterns to Avoid
 
 1. **Don't use plain HTML buttons** → Use `Button` or `IconButton`
 2. **Don't use plain HTML tables** → Use `DataGrid` or `DisplayTable`
 3. **Don't use plain HTML form elements** → Use MFUI form components
-4. **Don't create custom spacing** → Use `Stack` components with standard gaps
+4. **Don't create custom spacing** → Use `Stack` components with semantic spacing tokens
 5. **Don't ignore loading states** → Use `ProgressIndicator` or `Skeleton`
-6. **Don't create custom modals** → Use `Dialog` or `SidePane`
+6. **Don't create custom modals** → Use `Dialog`, `SidePane`, or `EmbeddedSidePane`
 7. **Don't use generic error messages** → Use `HelpMessage` with specific context
+8. **Don't use hardcoded spacing** → Use semantic spacing tokens like "paragraph.vertical", "icon-and-text.horizontal"
 
 ## Integration Notes for Agents
 
@@ -310,5 +316,7 @@ This knowledge base should be updated when:
 - New patterns emerge from LA Frontend development
 - Agent feedback reveals knowledge gaps or inaccuracies
 
-*Last updated: 2025-01-14*
-*Source repositories: mfui, la_frontend*
+*Last updated: 2025-08-14*
+*Source repository: https://github.com/moneyforward/mfui*
+*Component count: 50+ components across categories*
+*Architecture: PandaCSS + TypeScript + Vitest + Storybook*
