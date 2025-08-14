@@ -1,0 +1,355 @@
+.allocationConfig {
+  padding: 2rem;
+  background-color: var(--color-background-default);
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+.headerActions {
+  display: flex;
+  gap: 1rem;
+}
+
+.configLayout {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Method Selection Card */
+.methodCard {
+  padding: 2rem;
+}
+
+.sectionTitle {
+  margin: 0 0 1.5rem 0;
+  color: var(--color-text-primary);
+  font-size: 1.25rem;
+}
+
+.methodSelection {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.methodOption {
+  border: 2px solid var(--color-border-default);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.methodOption:has(:checked) {
+  border-color: var(--color-border-accent);
+  background-color: var(--color-background-accent-subtle);
+}
+
+.methodLabel {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.methodRadio {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.methodContent {
+  flex: 1;
+}
+
+.methodName {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.methodDescription {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Custom Weights Section */
+.customWeights {
+  border-top: 1px solid var(--color-border-default);
+  padding-top: 2rem;
+  margin-top: 2rem;
+}
+
+.subsectionTitle {
+  margin: 0 0 1rem 0;
+  color: var(--color-text-primary);
+  font-size: 1.125rem;
+}
+
+.weightInputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.weightInput label {
+  display: block;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.inputWithPercent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inputWithPercent span {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.numberInput {
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-default);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--color-background-surface);
+  color: var(--color-text-primary);
+  width: 100px;
+}
+
+.numberInput:focus {
+  outline: none;
+  border-color: var(--color-border-accent);
+  box-shadow: 0 0 0 2px var(--color-border-accent-subtle);
+}
+
+.weightTotal {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  padding: 1rem;
+  background-color: var(--color-background-subtle);
+  border-radius: 4px;
+}
+
+.warning {
+  color: #dc2626;
+}
+
+/* Allocation Table */
+.allocationTable {
+  padding: 2rem;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.totalIndicator {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 1.125rem;
+}
+
+.totalIndicator.valid {
+  background-color: #f0fdf4;
+  color: #16a34a;
+  border: 1px solid #bbf7d0;
+}
+
+.totalIndicator.invalid {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.error {
+  font-size: 0.875rem;
+}
+
+.allocationGrid {
+  border: 1px solid var(--color-border-default);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gridHeader {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  background-color: var(--color-background-subtle);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.gridHeader > div {
+  padding: 1rem;
+  border-right: 1px solid var(--color-border-default);
+}
+
+.gridHeader > div:last-child {
+  border-right: none;
+}
+
+.gridRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  border-top: 1px solid var(--color-border-default);
+}
+
+.gridRow > div {
+  padding: 1rem;
+  border-right: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+}
+
+.gridRow > div:last-child {
+  border-right: none;
+}
+
+.deptName {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.percentageInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.percentageInput input {
+  width: 80px;
+}
+
+.percentageInput span {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.estimatedCost {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* Preview Card */
+.previewCard {
+  padding: 2rem;
+}
+
+.previewChart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.previewBar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.previewLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.previewBarContainer {
+  height: 24px;
+  background-color: var(--color-background-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.previewBarFill {
+  height: 100%;
+  border-radius: 12px;
+  transition: width 0.3s ease;
+  min-width: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .allocationConfig {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .headerActions {
+    justify-content: center;
+  }
+
+  .weightInputs {
+    grid-template-columns: 1fr;
+  }
+
+  .gridHeader,
+  .gridRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .gridHeader > div,
+  .gridRow > div {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-default);
+  }
+
+  .gridHeader > div:last-child,
+  .gridRow > div:last-child {
+    border-bottom: none;
+  }
+
+  .tableHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .configLayout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .methodCard {
+    grid-column: 1 / -1;
+  }
+
+  .allocationTable {
+    grid-row: 2;
+  }
+
+  .previewCard {
+    grid-row: 2;
+  }
+}
