@@ -1,63 +1,57 @@
 # MFUI Design Tokens Reference
 
+*Comprehensive design token system for MoneyForward UI (MFUI)*
+
 ## Overview
 
-This document defines the comprehensive set of design tokens used across the MoneyForward UI (MFUI) system. These tokens ensure consistency across all components and applications.
+This document defines the comprehensive set of design tokens used across the MoneyForward UI (MFUI) system following UIDS v2 compliance. These tokens ensure consistency across all 50+ components and applications, consumed through CSS custom properties and CSS Modules.
 
-## Color Tokens
+## Color Token System
 
-### Primary Colors
-```css
-/* Brand Primary - Blue */
---mfui-color-primary-50: #f0f9ff;
---mfui-color-primary-100: #e0f2fe;
---mfui-color-primary-200: #bae6fd;
---mfui-color-primary-300: #7dd3fc;
---mfui-color-primary-400: #38bdf8;
---mfui-color-primary-500: #0ea5e9; /* Base primary */
---mfui-color-primary-600: #0284c7;
---mfui-color-primary-700: #0369a1;
---mfui-color-primary-800: #075985;
---mfui-color-primary-900: #0c4a6e;
+### Primary Color Tokens
+```json
+{
+  "primary": {
+    "content": {
+      "none": "blue-49",
+      "hovered": "blue-38", 
+      "pressed": "blue-28"
+    },
+    "border": {
+      "none": "blue-49",
+      "hovered": "blue-38",
+      "pressed": "blue-28"
+    },
+    "background": {
+      "none": "blue-49",
+      "hovered": "blue-38", 
+      "pressed": "blue-28"
+    },
+    "sub-background": {
+      "none": "blue-88",
+      "hovered": "blue-86",
+      "pressed": "blue-84"
+    }
+  }
+}
 ```
 
-### Secondary Colors
+### Semantic Color Categories
 ```css
-/* Neutral Gray */
---mfui-color-gray-50: #fafafa;
---mfui-color-gray-100: #f4f4f5;
---mfui-color-gray-200: #e4e4e7;
---mfui-color-gray-300: #d4d4d8;
---mfui-color-gray-400: #a1a1aa;
---mfui-color-gray-500: #71717a;
---mfui-color-gray-600: #52525b;
---mfui-color-gray-700: #3f3f46;
---mfui-color-gray-800: #27272a;
---mfui-color-gray-900: #18181b;
-```
+/* Signal Colors */
+--mfui-color-signal-green: /* Success states */
+--mfui-color-signal-red: /* Error states */
+--mfui-color-signal-yellow: /* Warning states */
 
-### Semantic Colors
-```css
-/* Success - Green */
---mfui-color-success-50: #f0fdf4;
---mfui-color-success-100: #dcfce7;
---mfui-color-success-500: #22c55e; /* Base success */
---mfui-color-success-600: #16a34a;
---mfui-color-success-700: #15803d;
+/* State Colors */
+--mfui-color-disabled: /* Disabled elements */
+--mfui-color-selected: /* Selected/active states */
 
-/* Warning - Amber */
---mfui-color-warning-50: #fffbeb;
---mfui-color-warning-100: #fef3c7;
---mfui-color-warning-500: #f59e0b; /* Base warning */
---mfui-color-warning-600: #d97706;
---mfui-color-warning-700: #b45309;
+/* Neutral System */
+--mfui-color-neutral: /* Grayscale hierarchy */
 
-/* Error - Red */
---mfui-color-error-50: #fef2f2;
---mfui-color-error-100: #fee2e2;
---mfui-color-error-500: #ef4444; /* Base error */
---mfui-color-error-600: #dc2626;
---mfui-color-error-700: #b91c1c;
+/* Accent Colors */
+--mfui-color-accent: /* MoneyForward brand accents */
 ```
 
 ## Typography Tokens
@@ -77,16 +71,32 @@ This document defines the comprehensive set of design tokens used across the Mon
 --mfui-font-weight-bold: 700;
 ```
 
-### Font Sizes
+### Typography Scale & Semantic Styles
 ```css
---mfui-font-size-xs: 0.75rem;    /* 12px */
---mfui-font-size-sm: 0.875rem;   /* 14px */
---mfui-font-size-base: 1rem;     /* 16px */
---mfui-font-size-lg: 1.125rem;   /* 18px */
---mfui-font-size-xl: 1.25rem;    /* 20px */
---mfui-font-size-2xl: 1.5rem;    /* 24px */
---mfui-font-size-3xl: 1.875rem;  /* 30px */
---mfui-font-size-4xl: 2.25rem;   /* 36px */
+/* Semantic Typography Tokens */
+--mfui-typography-page-heading-1: /* Largest page heading */
+--mfui-typography-page-heading-2: /* Secondary page heading */
+--mfui-typography-section-heading: /* Section headings */
+--mfui-typography-content-heading: /* Content block headings */
+--mfui-typography-body: /* Standard body text */
+--mfui-typography-strong-body: /* Emphasized body text */
+--mfui-typography-condensed-body: /* Compact body text */
+--mfui-typography-help-message: /* Help and error text */
+--mfui-typography-control-label: /* Form control labels */
+--mfui-typography-amount: /* Financial amount display */
+```
+
+### Typography Variants
+```css
+/* Body text variants */
+--mfui-font-body-regular: /* Standard body text */
+--mfui-font-body-strong: /* Bold body text */
+--mfui-font-body-condensed: /* Compact body text */
+
+/* Specialized text */
+--mfui-font-help-message: /* Form help text */
+--mfui-font-control-label: /* Form labels */
+--mfui-font-amount: /* Financial amounts */
 ```
 
 ### Line Heights
@@ -105,30 +115,29 @@ This document defines the comprehensive set of design tokens used across the Mon
 
 ## Spacing Tokens
 
-### Base Spacing Scale
+### Layout Grid System
 ```css
---mfui-space-0: 0;
---mfui-space-1: 0.25rem;  /* 4px */
---mfui-space-2: 0.5rem;   /* 8px */
---mfui-space-3: 0.75rem;  /* 12px */
---mfui-space-4: 1rem;     /* 16px */
---mfui-space-5: 1.25rem;  /* 20px */
---mfui-space-6: 1.5rem;   /* 24px */
---mfui-space-8: 2rem;     /* 32px */
---mfui-space-10: 2.5rem;  /* 40px */
---mfui-space-12: 3rem;    /* 48px */
---mfui-space-16: 4rem;    /* 64px */
---mfui-space-20: 5rem;    /* 80px */
---mfui-space-24: 6rem;    /* 96px */
+/* Grid-based spacing with horizontal and vertical scales */
+--mfui-space-horizontal-base: 14px;
+--mfui-space-vertical-base: 24px;
+
+/* Fractional spacing scale */
+--mfui-space-0-25x: /* 0.25 × base */
+--mfui-space-0-5x: /* 0.5 × base */
+--mfui-space-1x: /* 1 × base */
+--mfui-space-1-5x: /* 1.5 × base */
+--mfui-space-2x: /* 2 × base */
 ```
 
-### Component Spacing
+### Semantic Spacing Tokens
 ```css
---mfui-space-component-xs: var(--mfui-space-1);  /* 4px */
---mfui-space-component-sm: var(--mfui-space-2);  /* 8px */
---mfui-space-component-md: var(--mfui-space-4);  /* 16px */
---mfui-space-component-lg: var(--mfui-space-6);  /* 24px */
---mfui-space-component-xl: var(--mfui-space-8);  /* 32px */
+/* Context-specific spacing */
+--mfui-space-icon-text-horizontal: /* Icon to text spacing */
+--mfui-space-key-value-horizontal: /* Key-value pair spacing */
+--mfui-space-inline-horizontal: /* Inline element spacing */
+--mfui-space-container-horizontal: /* Container spacing */
+--mfui-space-paragraph-vertical: /* Paragraph spacing */
+--mfui-space-section-vertical: /* Section spacing */
 ```
 
 ## Layout Tokens
@@ -225,97 +234,183 @@ This document defines the comprehensive set of design tokens used across the Mon
 --mfui-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 ```
 
-## Component-Specific Tokens
+## Component-Specific Token Collections
 
-### Button Tokens
+### Button Token System
 ```css
---mfui-button-height-sm: 2rem;    /* 32px */
---mfui-button-height-md: 2.5rem;  /* 40px */
---mfui-button-height-lg: 3rem;    /* 48px */
+/* Button sizing with semantic naming */
+--mfui-button-size-small: /* Compact buttons */
+--mfui-button-size-medium: /* Standard buttons */
+--mfui-button-size-large: /* Prominent buttons */
 
---mfui-button-padding-x-sm: 0.75rem;  /* 12px */
---mfui-button-padding-x-md: 1rem;     /* 16px */
---mfui-button-padding-x-lg: 1.5rem;   /* 24px */
+/* Button priority variants */
+--mfui-button-priority-primary: /* Primary actions */
+--mfui-button-priority-secondary: /* Secondary actions */
+--mfui-button-priority-tertiary: /* Tertiary actions */
 ```
 
-### Input Tokens
+### Form Control Tokens
 ```css
---mfui-input-height-sm: 2rem;    /* 32px */
---mfui-input-height-md: 2.5rem;  /* 40px */
---mfui-input-height-lg: 3rem;    /* 48px */
+/* Input field specifications */
+--mfui-textbox-height-small: /* Compact text inputs */
+--mfui-textbox-height-medium: /* Standard text inputs */
+--mfui-textbox-height-large: /* Large text inputs */
 
---mfui-input-padding-x: 0.75rem;  /* 12px */
---mfui-input-padding-y: 0.5rem;   /* 8px */
+/* Select box configurations */
+--mfui-selectbox-dropdown-max-height: /* Dropdown size limits */
+--mfui-selectbox-search-enabled: /* Search functionality */
 
---mfui-input-border-width: 1px;
---mfui-input-border-radius: var(--mfui-border-radius-md);
+/* Date picker specifications */
+--mfui-datepicker-calendar-width: /* Calendar popup size */
+--mfui-datepicker-range-enabled: /* Range selection mode */
 ```
 
-### Card Tokens
+### Layout Component Tokens
 ```css
---mfui-card-padding: 1.5rem;  /* 24px */
---mfui-card-border-radius: var(--mfui-border-radius-lg);
---mfui-card-shadow: var(--mfui-shadow-sm);
+/* Panel specifications */
+--mfui-panel-padding: /* Internal panel spacing */
+--mfui-panel-border-radius: /* Panel corner rounding */
+--mfui-panel-elevation: /* Panel shadow depth */
+
+/* Stack spacing configurations */
+--mfui-vstack-gap-paragraph: /* Vertical paragraph spacing */
+--mfui-vstack-gap-section: /* Vertical section spacing */
+--mfui-hstack-gap-inline: /* Horizontal inline spacing */
+--mfui-hstack-gap-container: /* Horizontal container spacing */
 ```
 
-## Usage Guidelines
+## CSS Modules Integration
 
-### Token Naming Convention
-- Prefix: `--mfui-`
-- Category: `color`, `space`, `font`, etc.
-- Property: `primary`, `secondary`, `size`, etc.
-- Scale: `50`, `100`, `sm`, `md`, `lg`, etc.
-
-### Best Practices
-
-1. **Always use tokens instead of hard-coded values**
-   ```css
-   /* Good */
-   color: var(--mfui-color-primary-500);
-   
-   /* Bad */
-   color: #0ea5e9;
-   ```
-
-2. **Use semantic color tokens for meaning**
-   ```css
-   /* Good */
-   color: var(--mfui-color-success-600);
-   
-   /* Less ideal */
-   color: var(--mfui-color-green-600);
-   ```
-
-3. **Follow the spacing scale consistently**
-   ```css
-   /* Good */
-   margin: var(--mfui-space-4) var(--mfui-space-6);
-   
-   /* Bad */
-   margin: 15px 25px;
-   ```
-
-4. **Use component-specific tokens when available**
-   ```css
-   /* Good */
-   height: var(--mfui-button-height-md);
-   
-   /* Less ideal */
-   height: var(--mfui-space-10);
-   ```
-
-### Customization
-
-Design tokens can be customized at the application level by overriding CSS custom properties:
-
+### Token Usage in CSS Modules
 ```css
-:root {
-  /* Custom primary color */
-  --mfui-color-primary-500: #1e40af;
-  
-  /* Custom spacing scale */
-  --mfui-space-4: 1.125rem; /* 18px instead of 16px */
+/* Component.module.css */
+.button {
+  height: var(--mfui-button-size-medium);
+  padding: 0 var(--mfui-button-padding-horizontal-medium);
+  background-color: var(--mfui-color-primary-background-none);
+  color: var(--mfui-color-primary-content-none);
+  border-radius: var(--mfui-border-radius-md);
+  font-weight: var(--mfui-font-weight-medium);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--mfui-space-icon-text-horizontal);
+}
+
+.button:hover {
+  background-color: var(--mfui-color-primary-background-hovered);
+  color: var(--mfui-color-primary-content-hovered);
+}
+
+.button--primary {
+  background-color: var(--mfui-color-primary-background-none);
+  color: var(--mfui-color-primary-content-none);
+}
+
+.button--secondary {
+  background-color: var(--mfui-color-neutral-background-none);
+  color: var(--mfui-color-neutral-content-none);
+  border: 1px solid var(--mfui-color-neutral-border-none);
 }
 ```
 
-This token system ensures consistency across all MFUI components and enables easy theming and customization while maintaining design coherence.
+### Component Implementation
+```typescript
+// Button.tsx
+import React from 'react'
+import styles from './Button.module.css'
+
+interface ButtonProps {
+  priority?: 'primary' | 'secondary'
+  size?: 'small' | 'medium' | 'large'
+  children: React.ReactNode
+}
+
+export const Button = ({ priority = 'primary', size = 'medium', children, ...props }: ButtonProps) => {
+  const className = [
+    styles.button,
+    styles[`button--${priority}`],
+    styles[`button--${size}`]
+  ].filter(Boolean).join(' ')
+
+  return (
+    <button className={className} {...props}>
+      {children}
+    </button>
+  )
+}
+```
+
+## Token Usage Guidelines
+
+### Semantic Token Selection
+1. **Prefer semantic over literal tokens**
+   ```css
+   /* Good - semantic meaning */
+   gap: var(--mfui-space-paragraph-vertical);
+   
+   /* Less ideal - literal value */
+   gap: var(--mfui-space-6);
+   ```
+
+2. **Use context-appropriate spacing**
+   ```css
+   /* Good - context-specific */
+   gap: var(--mfui-space-icon-text-horizontal); /* For icon + text */
+   gap: var(--mfui-space-key-value-horizontal); /* For form layouts */
+   
+   /* Bad - generic spacing */
+   gap: 1rem;
+   ```
+
+3. **Follow state-based color tokens**
+   ```css
+   /* Good - interactive states */
+   color: var(--mfui-color-primary-content-none);
+   
+   .component:hover {
+     color: var(--mfui-color-primary-content-hovered);
+   }
+   ```
+
+### Component Token Priority
+1. Component-specific tokens (highest priority)
+2. Semantic category tokens
+3. Base system tokens (lowest priority)
+
+### Accessibility Compliance
+- All color tokens meet WCAG 2.2 Level A contrast requirements
+- Typography tokens include proper line-height for readability
+- Interactive element tokens meet minimum touch target sizes (44px)
+- Focus tokens provide visible focus indicators
+
+### Token Customization
+
+Tokens can be customized at the application level by overriding CSS custom properties:
+
+```css
+/* globals.css or theme.css */
+:root {
+  /* Custom primary color */
+  --mfui-color-primary-background-none: #1e40af;
+  --mfui-color-primary-content-none: #ffffff;
+  
+  /* Custom spacing scale */
+  --mfui-space-section-vertical: 3rem;
+  
+  /* Custom typography */
+  --mfui-typography-page-heading-1: 700 2.5rem/1.2 var(--mfui-font-family-sans);
+}
+
+/* Dark theme example */
+[data-theme='dark'] {
+  --mfui-color-primary-background-none: #3b82f6;
+  --mfui-color-neutral-background-none: #1f2937;
+  --mfui-color-neutral-content-none: #f9fafb;
+}
+```
+
+This comprehensive token system ensures consistency across all MFUI components while providing the flexibility needed for application-specific customization and theming.
+
+*Architecture: CSS Modules + TypeScript + CSS Custom Properties*
+*Compliance: WCAG 2.2 Level A + UIDS v2*
+*Integration: Design tokens consumed via CSS custom properties*
