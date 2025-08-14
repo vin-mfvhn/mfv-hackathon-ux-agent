@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Dashboard - Department Cost Analytics</title>
+    <style>
+        /* Money Forward UI Design System Colors & Patterns */
+        :root {
+            --mf-primary: #0066cc;
+            --mf-success: #28a745;
+            --mf-warning: #ffc107;
+            --mf-danger: #dc3545;
+            --mf-info: #17a2b8;
+            --mf-light: #f8f9fa;
+            --mf-dark: #343a40;
+            --mf-gray-100: #f8f9fa;
+            --mf-gray-200: #e9ecef;
+            --mf-gray-300: #dee2e6;
+            --mf-gray-600: #6c757d;
+            --mf-gray-700: #495057;
+            --mf-gray-800: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--mf-light);
+            color: var(--mf-gray-800);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .mf-header {
+            background: var(--mf-primary);
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .mf-logo {
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mf-nav-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .mf-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .mf-btn-primary {
+            background: var(--mf-primary);
+            color: white;
+        }
+
+        .mf-btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .mf-btn-outline {
+            background: transparent;
+            color: var(--mf-primary);
+            border: 1px solid var(--mf-primary);
+        }
+
+        .mf-btn-outline:hover {
+            background: var(--mf-primary);
+            color: white;
+        }
+
+        .mf-btn-ghost {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+        }
+
+        .mf-btn-ghost:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Breadcrumb */
+        .mf-breadcrumb {
+            background: white;
+            padding: 12px 24px;
+            border-bottom: 1px solid var(--mf-gray-300);
+            font-size: 14px;
+            color: var(--mf-gray-600);
+        }
+
+        .mf-breadcrumb a {
+            color: var(--mf-primary);
+            text-decoration: none;
+        }
+
+        .mf-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Header */
+        .mf-page-header {
+            background: white;
+            padding: 24px;
+            border-bottom: 1px solid var(--mf-gray-300);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mf-page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--mf-gray-800);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mf-page-controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .mf-select {
+            padding: 8px 12px;
+            border: 1px solid var(--mf-gray-300);
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .mf-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Cards */
+        .mf-card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--mf-gray-200);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.2s ease;
+        }
+
+        .mf-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .mf-card-body {
+            padding: 24px;
+        }
+
+        /* Grid System */
+        .mf-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .mf-grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* KPI Cards */
+        .mf-kpi-card {
+            text-align: center;
+            padding: 24px;
+            border-left: 4px solid var(--mf-primary);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .mf-kpi-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .mf-kpi-card.danger {
+            border-left-color: var(--mf-danger);
+        }
+
+        .mf-kpi-card.warning {
+            border-left-color: var(--mf-warning);
+        }
+
+        .mf-kpi-card.success {
+            border-left-color: var(--mf-success);
+        }
+
+        .mf-kpi-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--mf-gray-800);
+            margin-bottom: 8px;
+        }
+
+        .mf-kpi-label {
+            font-size: 14px;
+            color: var(--mf-gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        .mf-kpi-change {
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .mf-kpi-change.positive {
+            color: var(--mf-success);
+        }
+
+        .mf-kpi-change.negative {
+            color: var(--mf-danger);
+        }
+
+        /* Section Headers */
+        .mf-section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--mf-gray-800);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Chart Container */
+        .mf-chart-container {
+            margin-bottom: 32px;
+        }
+
+        .mf-chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .mf-chart-placeholder {
+            height: 300px;
+            background: var(--mf-gray-100);
+            border: 2px dashed var(--mf-gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mf-trend-line {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            right: 40px;
+            height: 180px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 180'%3E%3Cpolyline points='0,160 50,140 100,120 150,100 200,80 250,70 300,60 350,50 400,40' fill='none' stroke='%230066cc' stroke-width='3'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+        }
+
+        .mf-chart-labels {
+            position: absolute;
+            bottom: 10px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--mf-gray-600);
+        }
+
+        /* Table */
+        .mf-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .mf-table th,
+        .mf-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--mf-gray-200);
+        }
+
+        .mf-table th {
+            background: var(--mf-gray-100);
+            font-weight: 600;
+            color: var(--mf-gray-700);
+            font-size: 14px;
+        }
+
+        .mf-table tbody tr {
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .mf-table tbody tr:hover {
+            background: var(--mf-gray-100);
+        }
+
+        /* Badge */
+        .mf-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .mf-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .mf-badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .mf-badge.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Alert Items */
+        .mf-alert {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+
+        .mf-alert.critical {
+            background: #fff5f5;
+            border-left-color: var(--mf-danger);
+        }
+
+        .mf-alert.warning {
+            background: #fffbf0;
+            border-left-color: var(--mf-warning);
+        }
+
+        .mf-alert.info {
+            background: #f0f8ff;
+            border-left-color: var(--mf-info);
+        }
+
+        .mf-alert-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .mf-alert-content {
+            flex: 1;
+        }
+
+        /* Icons */
+        .mf-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mf-container {
+                padding: 16px;
+            }
+
+            .mf-page-header {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+
+            .mf-page-title {
+                font-size: 24px;
+            }
+
+            .mf-grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .mf-table {
+                font-size: 14px;
+            }
+
+            .mf-table th,
+            .mf-table td {
+                padding: 12px 8px;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .loading {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="mf-header">
+        <div class="mf-logo">
+            🏢 Money Forward Lease Accounting
+        </div>
+        <nav class="mf-nav-actions">
+            <button class="mf-btn mf-btn-ghost" onclick="showSettings()">⚙️ Settings</button>
+            <button class="mf-btn mf-btn-ghost" onclick="showProfile()">👤 Profile</button>
+            <button class="mf-btn mf-btn-ghost" onclick="showHelp()">❓ Help</button>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="mf-breadcrumb">
+        📍 <a href="#" onclick="navigateHome()">Dashboard</a> > Department Cost Analytics
+    </div>
+
+    <!-- Page Header -->
+    <div class="mf-page-header">
+        <h1 class="mf-page-title">📊 Department Cost Analytics</h1>
+        <div class="mf-page-controls">
+            <select class="mf-select" onchange="changePeriod(this.value)">
+                <option value="Q4 2024">Q4 2024</option>
+                <option value="Q3 2024">Q3 2024</option>
+                <option value="Q2 2024">Q2 2024</option>
+                <option value="Q1 2024">Q1 2024</option>
+            </select>
+            <button class="mf-btn mf-btn-primary" onclick="exportReport()">
+                📥 Export
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mf-container">
+        <!-- KPI Cards Section -->
+        <section>
+            <h2 class="mf-section-title">💡 Executive Overview</h2>
+            <div class="mf-grid mf-grid-4">
+                <div class="mf-card mf-kpi-card" onclick="showKpiDetails('total-cost')">
+                    <div class="mf-kpi-value">$2,400,000</div>
+                    <div class="mf-kpi-label">Total Cost</div>
+                    <div class="mf-kpi-change positive">↗ +$120K from last quarter</div>
+                </div>
+                <div class="mf-card mf-kpi-card danger" onclick="showKpiDetails('budget-variance')">
+                    <div class="mf-kpi-value">+5.2%</div>
+                    <div class="mf-kpi-label">vs Budget</div>
+                    <div class="mf-kpi-change negative">🔴 Over $125K</div>
+                </div>
+                <div class="mf-card mf-kpi-card" onclick="showKpiDetails('yoy-growth')">
+                    <div class="mf-kpi-value">+12.1%</div>
+                    <div class="mf-kpi-label">vs Last Year</div>
+                    <div class="mf-kpi-change positive">↗ +$290K growth</div>
+                </div>
+                <div class="mf-card mf-kpi-card" onclick="showKpiDetails('cost-per-sqft')">
+                    <div class="mf-kpi-value">$42/sqft</div>
+                    <div class="mf-kpi-label">Avg/SqFt</div>
+                    <div class="mf-kpi-change positive">↗ +$3/sqft</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trend Chart Section -->
+        <section class="mf-chart-container">
+            <div class="mf-card">
+                <div class="mf-card-body">
+                    <div class="mf-chart-header">
+                        <h3 class="mf-section-title">📈 12-Month Trend Analysis</h3>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="mf-btn mf-btn-outline" onclick="zoomChart()">🔍 Zoom</button>
+                            <button class="mf-btn mf-btn-outline" onclick="changeChartType()">📊 Chart Type</button>
+                        </div>
+                    </div>
+                    <div class="mf-chart-placeholder">
+                        <div class="mf-trend-line"></div>
+                        <div class="mf-chart-labels">
+                            <span>Jan</span>
+                            <span>Feb</span>
+                            <span>Mar</span>
+                            <span>Apr</span>
+                            <span>May</span>
+                            <span>Jun</span>
+                            <span>Jul</span>
+                            <span>Aug</span>
+                            <span>Sep</span>
+                            <span>Oct</span>
+                            <span>Nov</span>
+                            <span>Dec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Department Table Section -->
+        <section>
+            <div class="mf-card">
+                <div class="mf-card-body">
+                    <h3 class="mf-section-title">🏢 Top Cost Centers (Click to Drill Down)</h3>
+                    <table class="mf-table">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Current</th>
+                                <th>Budget</th>
+                                <th>Variance</th>
+                                <th>Locations</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr onclick="drillDownDepartment('Sales')">
+                                <td><strong>Sales</strong></td>
+                                <td>$486,000</td>
+                                <td>$450,000</td>
+                                <td><span class="mf-badge danger">+8.0% 🔴</span></td>
+                                <td>3</td>
+                                <td>
+                                    <button class="mf-btn mf-btn-outline" style="padding: 6px 12px; font-size: 12px;" 
+                                            onclick="event.stopPropagation(); drillDownDepartment('Sales')">
+                                        View →
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr onclick="drillDownDepartment('Engineering')">
+                                <td><strong>Engineering</strong></td>
+                                <td>$312,000</td>
+                                <td>$320,000</td>
+                                <td><span class="mf-badge success">-2.5% 🟢</span></td>
+                                <td>2</td>
+                                <td>
+                                    <button class="mf-btn mf-btn-outline" style="padding: 6px 12px; font-size: 12px;" 
+                                            onclick="event.stopPropagation(); drillDownDepartment('Engineering')">
+                                        View →
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr onclick="drillDownDepartment('Marketing')">
+                                <td><strong>Marketing</strong></td>
+                                <td>$195,000</td>
+                                <td>$180,000</td>
+                                <td><span class="mf-badge danger">+8.3% 🔴</span></td>
+                                <td>2</td>
+                                <td>
+                                    <button class="mf-btn mf-btn-outline" style="padding: 6px 12px; font-size: 12px;" 
+                                            onclick="event.stopPropagation(); drillDownDepartment('Marketing')">
+                                        View →
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr onclick="drillDownDepartment('Operations')">
+                                <td><strong>Operations</strong></td>
+                                <td>$156,000</td>
+                                <td>$160,000</td>
+                                <td><span class="mf-badge success">-2.5% 🟢</span></td>
+                                <td>1</td>
+                                <td>
+                                    <button class="mf-btn mf-btn-outline" style="padding: 6px 12px; font-size: 12px;" 
+                                            onclick="event.stopPropagation(); drillDownDepartment('Operations')">
+                                        View →
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr onclick="drillDownDepartment('HR')">
+                                <td><strong>HR</strong></td>
+                                <td>$89,000</td>
+                                <td>$85,000</td>
+                                <td><span class="mf-badge warning">+4.7% 🟡</span></td>
+                                <td>1</td>
+                                <td>
+                                    <button class="mf-btn mf-btn-outline" style="padding: 6px 12px; font-size: 12px;" 
+                                            onclick="event.stopPropagation(); drillDownDepartment('HR')">
+                                        View →
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts & Recommendations Section -->
+        <section>
+            <div class="mf-card">
+                <div class="mf-card-body">
+                    <h3 class="mf-section-title">⚠️ Alerts & Recommendations</h3>
+                    <div class="mf-alert critical">
+                        <div class="mf-alert-icon">🔴</div>
+                        <div class="mf-alert-content">
+                            <strong>Sales Dept NYC office 78% underutilized</strong><br>
+                            Potential $244K annual savings through space consolidation
+                        </div>
+                        <button class="mf-btn mf-btn-outline" onclick="viewAlertDetails('sales-underutilized')">
+                            Analyze
+                        </button>
+                    </div>
+                    <div class="mf-alert warning">
+                        <div class="mf-alert-icon">🟡</div>
+                        <div class="mf-alert-content">
+                            <strong>3 lease renewals due in next 90 days</strong><br>
+                            Decision required for NYC, Chicago, and Austin locations
+                        </div>
+                        <button class="mf-btn mf-btn-outline" onclick="viewAlertDetails('renewals-due')">
+                            Review
+                        </button>
+                    </div>
+                    <div class="mf-alert info">
+                        <div class="mf-alert-icon">💡</div>
+                        <div class="mf-alert-content">
+                            <strong>Marketing consolidation opportunity</strong><br>
+                            Combine Austin and Chicago offices to save $45K annually
+                        </div>
+                        <button class="mf-btn mf-btn-outline" onclick="viewAlertDetails('marketing-consolidation')">
+                            Explore
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Interactive Functions
+        function showKpiDetails(kpi) {
+            const details = {
+                'total-cost': 'Total Cost Details:\n\n• Base rent: $2,100,000\n• CAM charges: $240,000\n• Utilities: $60,000\n• Growth trend: +5.2% QoQ',
+                'budget-variance': 'Budget Variance Analysis:\n\n• Over budget: $125,000\n• Main drivers: Sales (+$36K), Marketing (+$15K)\n• Action needed: Space optimization',
+                'yoy-growth': 'Year-over-Year Growth:\n\n• 2023: $2,140,000\n• 2024: $2,400,000\n• Growth: +12.1% (+$260K)\n• Driven by: Expansion + inflation',
+                'cost-per-sqft': 'Cost per Square Foot:\n\n• Average: $42/sqft/year\n• Range: $38-52 across locations\n• Benchmark: Industry average $45/sqft'
+            };
+            alert(details[kpi] || 'KPI details loading...');
+        }
+
+        function drillDownDepartment(dept) {
+            // Simulate navigation to department detail view
+            alert(`Drilling down to ${dept} Department\n\nWould show:\n• Location breakdown\n• Cost allocation methodology\n• Space utilization metrics\n• Historical trends\n• Contract details\n\nIn the full application, this would navigate to a detailed view.`);
+        }
+
+        function changePeriod(period) {
+            // Simulate data refresh
+            document.body.classList.add('loading');
+            setTimeout(() => {
+                document.body.classList.remove('loading');
+                alert(`Data updated for ${period}`);
+            }, 1000);
+        }
+
+        function exportReport() {
+            alert('Export Options:\n\n📄 PDF Executive Summary\n📊 Excel Detailed Data\n📈 PowerPoint Charts\n📋 CSV Raw Data\n\nSelect format and recipients...');
+        }
+
+        function zoomChart() {
+            alert('Chart Zoom Options:\n\n• Select date range\n• Focus on specific departments\n• Compare multiple periods\n• View monthly breakdown');
+        }
+
+        function changeChartType() {
+            const currentChart = document.querySelector('.mf-trend-line');
+            const types = ['Line Chart', 'Bar Chart', 'Area Chart', 'Stacked Bar'];
+            const currentType = types[Math.floor(Math.random() * types.length)];
+            alert(`Chart Type: ${currentType}\n\nAvailable types:\n• Line chart (trends)\n• Bar chart (comparisons)\n• Area chart (cumulative)\n• Stacked bar (breakdowns)`);
+        }
+
+        function viewAlertDetails(alertId) {
+            const alerts = {
+                'sales-underutilized': 'Sales NYC Office Analysis:\n\n• Current utilization: 78%\n• Optimal utilization: 85-90%\n• Potential reduction: 2,400 sq ft\n• Annual savings: $244K\n• Implementation timeline: Q2 2025',
+                'renewals-due': 'Upcoming Lease Renewals:\n\n1. NYC Office - May 2025\n2. Chicago Hub - July 2025\n3. Austin Satellite - September 2025\n\nRecommended actions:\n• Start negotiations 6 months early\n• Consider consolidation options\n• Evaluate market rates',
+                'marketing-consolidation': 'Marketing Consolidation Analysis:\n\n• Austin office: 3,200 sq ft, 62% utilized\n• Chicago presence: 2,100 sq ft\n• Potential savings: $45K annually\n• Remote work capability: 80%\n• Recommended: Close Austin, expand Chicago'
+            };
+            alert(alerts[alertId] || 'Loading alert details...');
+        }
+
+        function showSettings() {
+            alert('Settings:\n\n⚙️ Dashboard preferences\n📊 Default time periods\n🔔 Alert thresholds\n📧 Notification settings\n🎨 Display options');
+        }
+
+        function showProfile() {
+            alert('Profile:\n\n👤 User: Finance Director\n🏢 Office: Corporate HQ\n🔑 Role: Executive\n📧 Notifications: Enabled\n📱 Mobile access: Active');
+        }
+
+        function showHelp() {
+            alert('Help & Support:\n\n📚 User guide\n🎥 Video tutorials\n💬 Live chat support\n📞 Phone support\n🔍 Search knowledge base');
+        }
+
+        function navigateHome() {
+            alert('Navigating to main dashboard...');
+        }
+
+        // Simulate real-time updates
+        let updateCounter = 0;
+        setInterval(() => {
+            updateCounter++;
+            if (updateCounter % 30 === 0) { // Every 30 seconds
+                // Simulate subtle data changes
+                const kpiValues = document.querySelectorAll('.mf-kpi-value');
+                kpiValues.forEach(value => {
+                    if (value.textContent.includes('$')) {
+                        const currentText = value.textContent;
+                        value.style.opacity = '0.7';
+                        setTimeout(() => {
+                            value.style.opacity = '1';
+                        }, 300);
+                    }
+                });
+                console.log('Dashboard data refreshed');
+            }
+        }, 1000);
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'r' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                changePeriod(document.querySelector('.mf-select').value);
+            }
+            if (e.key === 'e' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                exportReport();
+            }
+        });
+
+        // Tooltip functionality for accessibility
+        document.querySelectorAll('.mf-kpi-card').forEach(card => {
+            card.setAttribute('title', 'Click to view detailed breakdown');
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
