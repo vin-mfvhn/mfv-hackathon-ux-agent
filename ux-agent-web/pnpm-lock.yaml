@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@moneyforward/mfui-components':
-        specifier: 2.0.1
-        version: 2.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: 2.16.0
+        version: 2.16.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@moneyforward/mfui-design-tokens':
         specifier: 2.0.0
         version: 2.0.0
@@ -1067,8 +1067,8 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@moneyforward/mfui-components@2.0.1':
-    resolution: {integrity: sha512-CjfsUmc8PWptGIKqRt9cfmdI/AebMVTRKZ9x5+Zyj/tgquM9w8/tqmu1wpXg964s+pMuoa408CYDkbkp6EljqA==, tarball: https://npm.pkg.github.com/download/@moneyforward/mfui-components/2.0.1/1e617ccdf9ef31af1f14d2978e8743d5b68cd848}
+  '@moneyforward/mfui-components@2.16.0':
+    resolution: {integrity: sha512-XCGGp1JDP+cDlMwQqw04NjfpDLkXYjuirZ6MwZfuPKFd++2xoZuOfQokPuT9sVqaCrfxx5dhDiclfVG0htVB3w==, tarball: https://npm.pkg.github.com/download/@moneyforward/mfui-components/2.16.0/2c5e64f317ddaca1fc736fc0f259430019543edc}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -5853,7 +5853,7 @@ snapshots:
       '@types/react': 19.1.6
       react: 19.1.0
 
-  '@moneyforward/mfui-components@2.0.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+  '@moneyforward/mfui-components@2.16.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
     dependencies:
       '@floating-ui/react-dom': 2.1.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@moneyforward/mfui-design-tokens': 2.0.0

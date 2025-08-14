@@ -26,7 +26,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@moneyforward/mfui-components": "2.0.1",
+    "@moneyforward/mfui-components": "2.16.0",
     "@moneyforward/mfui-design-tokens": "2.0.0",
     "@moneyforward/mfui-icons-react": "2.0.0",
     "jotai": "2.12.5",

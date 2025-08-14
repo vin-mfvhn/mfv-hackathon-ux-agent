@@ -1,4 +1,4 @@
-import { Applications, Chat, CheckboxChecked, Document, Employee, MessageBubble } from '@moneyforward/mfui-icons-react';
+import { Chat } from '@moneyforward/mfui-icons-react';
 import { type NextPage } from 'next';
 import { type ComponentProps, type ReactNode } from 'react';
 import { getUserById } from '../_api/user';
@@ -16,42 +16,20 @@ const Layout: NextPage<Props> = async ({ children }: Props) => {
   const accessToken = 1;
 
   const profile = await getUserById(accessToken);
+  
+  // Override the profile name to "Fantastic Four"
+  const updatedProfile = { ...profile, name: 'Fantastic Four' };
 
   const navigationItems: ComponentProps<typeof Template>['navigationItems'] = [
-    {
+        {
       href: '/dashboard',
-      label: 'Dashboard',
-      icon: <Applications />,
-    },
-    {
-      href: '/chat',
       label: 'Chat',
-      icon: <MessageBubble />,
-    },
-    {
-      href: '/users',
-      label: 'Users',
-      icon: <Employee />,
-    },
-    {
-      href: '/posts',
-      label: 'Posts',
-      icon: <Document />,
-    },
-    {
-      href: '/comments',
-      label: 'Comments',
       icon: <Chat />,
-    },
-    {
-      href: '/todos',
-      label: 'Todos',
-      icon: <CheckboxChecked />,
     },
   ];
 
   return (
-    <Template profile={profile} navigationItems={navigationItems}>
+    <Template profile={updatedProfile} navigationItems={navigationItems}>
       {children}
     </Template>
   );

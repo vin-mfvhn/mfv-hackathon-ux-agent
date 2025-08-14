@@ -5,7 +5,7 @@ export default {
   redirects: async () => [
     {
       source: '/',
-      destination: '/dashboard',
+      destination: '/chat',
       permanent: true,
     },
   ],
