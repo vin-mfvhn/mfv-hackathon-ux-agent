@@ -61,10 +61,16 @@ For each feature in priority order:
 - Update navigation hierarchy as needed
 - Ensure proper active states and breadcrumbs
 
-### Step 5: Quality Assurance
-- Run type checking: `pnpm run type-check`
-- Run linting: `pnpm run lint`
-- Build verification: `pnpm run build`
+### Step 5: TypeScript Error Fixing & Quality Assurance
+- Run type checking: `pnpm run type-check` or `tsc --noEmit`
+- **MANDATORY**: Fix ALL TypeScript errors before proceeding
+  - Address missing type declarations
+  - Fix type mismatches and assignments
+  - Resolve import/export issues
+  - Add proper interface definitions
+  - Handle null/undefined cases properly
+- Run linting: `pnpm run lint` and fix all linting issues
+- Build verification: `pnpm run build` - must complete without errors
 - Test component stories: `pnpm run storybook`
 
 ### Step 6: Integration Testing
@@ -75,8 +81,9 @@ For each feature in priority order:
 
 ## Success Criteria
 - [ ] All specified features implemented and functional
-- [ ] No TypeScript errors or linting issues
-- [ ] Build process completes successfully
+- [ ] **ZERO TypeScript errors** - all type issues resolved
+- [ ] No linting issues or warnings
+- [ ] Build process completes successfully without any errors
 - [ ] Storybook stories created for new components
 - [ ] Navigation updated appropriately
 - [ ] API integration working with proper error handling

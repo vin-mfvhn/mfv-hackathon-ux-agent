@@ -27,7 +27,7 @@ Copy the react-router-lib to prototypes directory for use:
 mkdir -p prototypes/
 
 # Copy react-router-lib to prototypes directory
-cp -r react-router-lib/ prototypes/
+cp -r ./frontend-boilerplate/examples/react-router-lib/ prototypes/
 echo "✓ Copied react-router-lib to prototypes directory"
 ```
 
@@ -44,6 +44,7 @@ Run comprehensive checks before building:
 cd "{project_path}"
 pnpm run type-check || npm run type-check || npx tsc --noEmit
 ```
+**MANDATORY**: Fix ALL TypeScript errors before proceeding with build. The build process must not continue if any TypeScript errors exist.
 
 #### 2b. Linting
 ```bash
@@ -103,6 +104,7 @@ pnpm run build && pnpm run preview || npm run build && npm run preview
 
 ## Success Criteria
 - [ ] React-router-lib successfully copied to prototypes directory
+- [ ] **ZERO TypeScript errors** - all type issues resolved
 - [ ] All pre-build quality checks pass
 - [ ] Build completes without errors
 - [ ] Build output directory contains expected files

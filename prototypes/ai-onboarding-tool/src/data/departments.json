@@ -1,0 +1,130 @@
+{
+  "QA": {
+    "name": "Quality Assurance",
+    "description": "Responsible for ensuring product quality and testing standards",
+    "manager": "Cherry",
+    "welcome_template": "Welcome to the Quality Assurance team! We're dedicated to maintaining the highest standards of product quality and ensuring exceptional user experiences through comprehensive testing and quality control processes.",
+    "key_contacts": [
+      {
+        "name": "Cherry",
+        "role": "Department Manager",
+        "email": "cherry@moneyforward.com",
+        "speciality": "Test Strategy & Team Leadership"
+      },
+      {
+        "name": "QA Senior",
+        "role": "Senior QA Engineer", 
+        "email": "qa.senior@moneyforward.com",
+        "speciality": "Automation Testing"
+      }
+    ],
+    "resources": [
+      "QA Testing Guidelines",
+      "Test Automation Framework Documentation",
+      "Bug Reporting Process",
+      "Quality Standards Handbook"
+    ],
+    "applications": [
+      "TestRail",
+      "Jira",
+      "Selenium",
+      "PostMan"
+    ]
+  },
+  "AA": {
+    "name": "Advanced Analytics",
+    "description": "Data analytics and business intelligence department",
+    "manager": "Dave",
+    "welcome_template": "Welcome to Advanced Analytics! You'll be working with cutting-edge data analytics and AI technologies to drive business insights and innovation across MoneyForward products.",
+    "key_contacts": [
+      {
+        "name": "Dave",
+        "role": "Department Manager",
+        "email": "dave@moneyforward.com",
+        "speciality": "Data Strategy & Analytics Leadership"
+      },
+      {
+        "name": "James",
+        "role": "Tech Director",
+        "email": "james@moneyforward.com",
+        "speciality": "Technical Architecture"
+      }
+    ],
+    "resources": [
+      "Data Analytics Handbook",
+      "ML Model Development Guidelines",
+      "Business Intelligence Tools Guide",
+      "Data Privacy & Security Protocols"
+    ],
+    "applications": [
+      "Tableau",
+      "Python/Jupyter",
+      "BigQuery",
+      "Databricks"
+    ]
+  },
+  "SCI": {
+    "name": "Software & Cloud Infrastructure", 
+    "description": "Core engineering and infrastructure teams",
+    "manager": "Ness",
+    "welcome_template": "Welcome to Software & Cloud Infrastructure! You'll be building and maintaining the core systems that power MoneyForward's products, working with modern cloud technologies and scalable architectures.",
+    "key_contacts": [
+      {
+        "name": "Ness",
+        "role": "Department Manager",
+        "email": "ness@moneyforward.com",
+        "speciality": "Software Engineering & Infrastructure"
+      },
+      {
+        "name": "Bamboo",
+        "role": "Senior Engineer",
+        "email": "bamboo@moneyforward.com",
+        "speciality": "Cloud Architecture"
+      }
+    ],
+    "resources": [
+      "Engineering Standards Guide",
+      "Cloud Infrastructure Documentation",
+      "API Development Guidelines",
+      "Security Best Practices"
+    ],
+    "applications": [
+      "GitHub",
+      "AWS Console",
+      "Docker/Kubernetes",
+      "Datadog"
+    ]
+  },
+  "HRS": {
+    "name": "Human Resources Systems",
+    "description": "HR technology and systems management",
+    "manager": "Charlie", 
+    "welcome_template": "Welcome to Human Resources Systems! You'll be developing and maintaining the technology solutions that support our people operations and human resources management.",
+    "key_contacts": [
+      {
+        "name": "Charlie",
+        "role": "Department Manager",
+        "email": "charlie@moneyforward.com", 
+        "speciality": "HR Technology & Systems"
+      },
+      {
+        "name": "HR Tech Lead",
+        "role": "Technical Lead",
+        "email": "hr.tech@moneyforward.com",
+        "speciality": "HRIS Development"
+      }
+    ],
+    "resources": [
+      "HRIS Development Guide",
+      "Employee Data Privacy Standards",
+      "HR Process Documentation",
+      "Compliance Requirements"
+    ],
+    "applications": [
+      "BambooHR",
+      "Workday",
+      "Slack",
+      "Microsoft Teams"
+    ]
+  }
+}

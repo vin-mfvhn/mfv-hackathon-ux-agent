@@ -1,0 +1,8 @@
+.base {
+  color: var(--mfui-color-link-content-none);
+  text-decoration: underline;
+
+  &:hover {
+    color: var(--mfui-color-link-content-hovered);
+  }
+}

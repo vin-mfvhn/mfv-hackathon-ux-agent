@@ -1,0 +1,64 @@
+{
+  "demo_employees": [
+    {
+      "id": "demo001",
+      "fullname": "Alex Thompson",
+      "nickname": "Alex",
+      "position": "Engineer",
+      "role": "Engineer",
+      "department": "QA",
+      "manager": "Cherry",
+      "onboarding_date": "2025-08-15",
+      "probation": true,
+      "type": "Employee",
+      "personality_traits": ["detail-oriented", "collaborative", "analytical"],
+      "previous_experience": "3 years QA at tech startup",
+      "special_requirements": []
+    },
+    {
+      "id": "demo002", 
+      "fullname": "Sarah Chen",
+      "nickname": "Sarah",
+      "position": "Senior Software Engineer (Frontend)",
+      "role": "Senior",
+      "department": "SCI",
+      "manager": "Ness",
+      "onboarding_date": "2025-08-15",
+      "probation": true,
+      "type": "Employee",
+      "personality_traits": ["innovative", "mentoring", "frontend-expert"],
+      "previous_experience": "5 years React/TypeScript development",
+      "special_requirements": ["MFUI library expertise needed"]
+    },
+    {
+      "id": "demo003",
+      "fullname": "Marcus Rodriguez",
+      "nickname": "Marcus", 
+      "position": "Data Scientist",
+      "role": "Engineer",
+      "department": "AA",
+      "manager": "Dave",
+      "onboarding_date": "2025-08-15",
+      "probation": true,
+      "type": "Employee",
+      "personality_traits": ["data-driven", "curious", "problem-solver"],
+      "previous_experience": "4 years ML/Analytics at fintech",
+      "special_requirements": ["Advanced Python/ML setup required"]
+    },
+    {
+      "id": "demo004",
+      "fullname": "Jennifer Kim",
+      "nickname": "Jen",
+      "position": "Information Security and Corporate IT Manager", 
+      "role": "Manager",
+      "department": "HRS",
+      "manager": "Naomi",
+      "onboarding_date": "2025-08-15",
+      "probation": true,
+      "type": "Employee",
+      "personality_traits": ["strategic", "security-focused", "leadership"],
+      "previous_experience": "8 years IT management and security",
+      "special_requirements": ["Executive-level access and briefings"]
+    }
+  ]
+}

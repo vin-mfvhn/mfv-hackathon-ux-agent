@@ -20,18 +20,18 @@ format:
 ### Step 1: Validate Input
 - Ensure project_name is provided and valid (alphanumeric, hyphens, underscores only)
 - Verify target_directory exists (create if needed)
-- Check that frontend-boilerplate/examples/react-router-lib/ source exists
+- Check that ./frontend-boilerplate/examples/react-router-lib/ source exists
 
 ### Step 2: Copy Boilerplate Structure
 ```bash
 # Create target directory if it doesn't exist
 mkdir -p "{target_directory}/{project_name}"
 
-# Copy entire react-router-lib structure
-cp -r frontend-boilerplate/examples/react-router-lib/* "{target_directory}/{project_name}/"
+# Copy entire react-router-lib structure using full path from project root
+cp -r ./frontend-boilerplate/examples/react-router-lib/* "{target_directory}/{project_name}/"
 
 # Copy hidden files too
-cp -r frontend-boilerplate/examples/react-router-lib/.* "{target_directory}/{project_name}/" 2>/dev/null || true
+cp -r ./frontend-boilerplate/examples/react-router-lib/.* "{target_directory}/{project_name}/" 2>/dev/null || true
 ```
 
 ### Step 3: Update Package Configuration
