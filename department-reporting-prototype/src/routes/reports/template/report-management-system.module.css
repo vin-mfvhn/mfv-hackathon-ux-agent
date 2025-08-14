@@ -1,0 +1,335 @@
+/* Report Management System Styles - Story 2.4 Implementation */
+
+.reportSystem {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Tabs Section */
+.tabsSection {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--mfui-color-border-primary);
+}
+
+/* Template Library Section */
+.templateLibrary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.templateName {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.templateDescription {
+  color: var(--mfui-color-text-secondary);
+  font-size: 14px;
+}
+
+/* Category styling */
+.executive {
+  background-color: var(--mfui-color-semantic-error-background);
+  color: var(--mfui-color-semantic-error);
+  padding: 4px 8px;
+  border-radius: var(--mfui-border-radius-small);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.operational {
+  background-color: var(--mfui-color-semantic-info-background);
+  color: var(--mfui-color-semantic-info);
+  padding: 4px 8px;
+  border-radius: var(--mfui-border-radius-small);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.analytical {
+  background-color: var(--mfui-color-semantic-warning-background);
+  color: var(--mfui-color-semantic-warning);
+  padding: 4px 8px;
+  border-radius: var(--mfui-border-radius-small);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Scheduled Reports Section */
+.scheduledSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Distribution Groups */
+.distributionGroups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.distributionGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--mfui-color-border-primary);
+  border-radius: var(--mfui-border-radius-medium);
+  background-color: var(--mfui-color-background-primary);
+}
+
+.groupInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Report History Section */
+.historySection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Status styling */
+.active {
+  color: var(--mfui-color-semantic-success);
+  font-weight: 500;
+}
+
+.paused {
+  color: var(--mfui-color-semantic-warning);
+  font-weight: 500;
+}
+
+.success {
+  color: var(--mfui-color-semantic-success);
+  font-weight: 500;
+}
+
+.failed {
+  color: var(--mfui-color-semantic-error);
+  font-weight: 500;
+}
+
+.completed {
+  color: var(--mfui-color-semantic-success);
+  font-weight: 500;
+}
+
+.processing {
+  color: var(--mfui-color-semantic-info);
+  font-weight: 500;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Dialog Styles */
+.reportBuilder,
+.schedulingDialog {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0;
+  min-height: 400px;
+}
+
+.builderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.configGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.configItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.customDateRange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--mfui-color-border-primary);
+}
+
+/* Mobile-First Responsive Design (Story 2.6) */
+@media (max-width: 768px) {
+  .reportSystem {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .configGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .customDateRange {
+    grid-template-columns: 1fr;
+  }
+
+  .distributionGroups {
+    grid-template-columns: 1fr;
+  }
+
+  .distributionGroup {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .dialogActions {
+    flex-direction: column-reverse;
+  }
+
+  .checkboxGroup {
+    flex-direction: column;
+  }
+
+  /* Mobile dialog adjustments */
+  .reportBuilder,
+  .schedulingDialog {
+    min-height: 300px;
+  }
+}
+
+/* Touch Optimization (Story 2.6) */
+@media (hover: none) and (pointer: coarse) {
+  .reportSystem {
+    gap: 20px;
+  }
+  
+  /* Ensure minimum touch target size of 44px */
+  .actionButtons button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .distributionGroup {
+    min-height: 44px;
+    padding: 16px;
+  }
+  
+  .configItem {
+    min-height: 44px;
+  }
+}
+
+/* Performance Optimization (Story 2.7) */
+.reportSystem * {
+  /* Enable GPU acceleration for smooth interactions */
+  will-change: auto;
+}
+
+.templateLibrary,
+.scheduledSection,
+.historySection {
+  /* Optimize rendering for large datasets */
+  contain: layout style paint;
+}
+
+/* Dialog performance optimization */
+.reportBuilder,
+.schedulingDialog {
+  /* Optimize dialog rendering */
+  contain: layout style paint;
+}
+
+/* Background processing indicators */
+.processing::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid var(--mfui-color-semantic-info);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Report generation progress (60-second target) */
+.reportBuilder {
+  position: relative;
+}
+
+.reportBuilder::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    var(--mfui-color-semantic-info) 0%, 
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 60s linear;
+}
+
+.reportBuilder.generating::after {
+  transform: translateX(0);
+}

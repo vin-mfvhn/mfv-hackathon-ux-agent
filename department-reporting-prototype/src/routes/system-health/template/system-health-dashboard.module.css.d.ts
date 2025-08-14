@@ -1,0 +1,32 @@
+declare const styles: {
+  readonly healthDashboard: string;
+  readonly autoRefreshControl: string;
+  readonly statusOverview: string;
+  readonly statusHeader: string;
+  readonly statusIndicator: string;
+  readonly success: string;
+  readonly warning: string;
+  readonly error: string;
+  readonly metricsGrid: string;
+  readonly metricCard: string;
+  readonly metricValue: string;
+  readonly metricTarget: string;
+  readonly alertsSection: string;
+  readonly alertsHeader: string;
+  readonly alerts: string;
+  readonly targetsSection: string;
+  readonly targetsHeader: string;
+  readonly statusBadge: string;
+  readonly statusIcon: string;
+  readonly statusText: string;
+  readonly recommendationsSection: string;
+  readonly recommendations: string;
+  readonly recommendation: string;
+  readonly recommendationIcon: string;
+  readonly neutral: string;
+  readonly updateInfo: string;
+  readonly updateText: string;
+  readonly autoRefreshIndicator: string;
+};
+
+export default styles;
