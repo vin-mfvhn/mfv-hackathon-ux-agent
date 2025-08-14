@@ -1,0 +1,245 @@
+/* Reports Center Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20);
+}
+
+.subtitle {
+  margin-top: 4px;
+  color: var(--mfui-color-neutral-70);
+}
+
+/* Quick Exports Grid */
+.quickExports {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.exportCard {
+  padding: 16px;
+  background: var(--mfui-color-neutral-5);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20);
+  transition: all 0.2s ease;
+}
+
+.exportCard:hover {
+  background: var(--mfui-color-neutral-10);
+  border-color: var(--mfui-color-blue-30);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exportActions {
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+/* Section Headers */
+.sectionHeader {
+  margin-bottom: 16px;
+}
+
+/* Responsive Design */
+@media (width < 768px) {
+  .pageHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .quickExports {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tab Content Styling */
+:global(.mfui-tabs-content) {
+  padding-top: 20px;
+}
+
+/* DataGrid Button Sizing */
+:global(.mfui-datagrid button) {
+  min-width: 80px;
+}
+
+/* Export Card Animation */
+@keyframes exportPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.exportCard.exporting {
+  animation: exportPulse 1s infinite;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Badge Styling */
+:global(.mfui-badge) {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+/* Status Colors */
+.statusActive {
+  color: var(--mfui-color-signal-green);
+}
+
+.statusInactive {
+  color: var(--mfui-color-neutral-70);
+}
+
+/* Simplified Template Styles */
+.quickActions {
+  padding: 20px;
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+/* Tab Navigation */
+.tabHeaders {
+  display: flex;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mfui-color-neutral-70, #666);
+  border-bottom: 2px solid transparent;
+}
+
+.tabButton:hover {
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+}
+
+.tabActive {
+  color: var(--mfui-color-blue-49, #1890ff) !important;
+  border-bottom-color: var(--mfui-color-blue-49, #1890ff) !important;
+}
+
+.tabContent {
+  padding: 20px 0;
+}
+
+/* Template Grid */
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.templateCard {
+  padding: 20px;
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+.templateMeta {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+/* List Styles */
+.scheduledList,
+.historyList {
+  margin-top: 16px;
+}
+
+.scheduledItem,
+.historyItem {
+  padding: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  margin-bottom: 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Status Badges */
+.statusBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.statusactive {
+  background: #52c41a;
+  color: white;
+}
+
+.statusinactive {
+  background: #d9d9d9;
+  color: #666;
+}
+
+.statuscompleted {
+  background: #52c41a;
+  color: white;
+}
+
+.statusfailed {
+  background: #ff4d4f;
+  color: white;
+}
+
+.statuspending {
+  background: #faad14;
+  color: white;
+}
+
+/* Filters Summary */
+.filtersSummary {
+  padding: 20px;
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.filterItem {
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid var(--mfui-color-neutral-10, #f0f0f0);
+}

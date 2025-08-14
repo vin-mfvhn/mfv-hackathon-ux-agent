@@ -1,350 +1,647 @@
-# LA Frontend Patterns Knowledge Base
+# LA Frontend Template Patterns
+
+*Proven UI patterns extracted from MoneyForward LA Frontend application for template-based prototype generation*
 
 ## Overview
 
-This document catalogs proven UI patterns extracted from the LA Frontend codebase, providing real-world examples of successful MFUI component usage in production MoneyForward applications.
+This document catalogs battle-tested UI patterns from the LA Frontend codebase that demonstrate real-world MFUI usage. These patterns serve as templates for rapid prototype generation and ensure consistency with existing MoneyForward applications.
 
-## Pattern Catalog
+## Pattern Categories
 
-### 1. List Page Pattern
+### 1. List/Index Page Pattern
 
-**Description**: Standard pattern for displaying collections of business entities with search, filter, and bulk actions.
+**Purpose**: Display collections of data with filtering, sorting, and actions
 
-**Core Components**:
-- PageHeader with title and primary actions
-- Search/Filter toolbar
-- DataGrid with selection and sorting
-- Pagination controls
+**Example**: `pages/account-patterns/ui/account-patterns-template.tsx`
 
-**Real Implementation**: Account Items List (`pages/account-items/route.tsx`)
+**Structure**:
 ```jsx
-<PageHeader 
-  title="Account Items" 
-  primaryAction={<Button onClick={createNew}>Add New</Button>}
-/>
-<DataGrid
-  data={accountItems}
-  columns={[
-    { field: 'code', header: 'Code', sortable: true },
-    { field: 'name', header: 'Name', sortable: true },
-    { field: 'category', header: 'Category' },
-    { field: 'actions', header: 'Actions', render: ActionsMenu }
-  ]}
-  selectionMode="multiple"
-  onSelectionChange={handleSelection}
-/>
+<PageLayout
+  headerSlot={
+    <PageLayout.Header
+      headingSlot={title}
+      actionSlot={<Button priority="primary">Add New</Button>}
+      backButtonProps={{ href: parentPath }}
+      showBackButton
+    />
+  }
+>
+  <DataTableComponent />
+</PageLayout>
 ```
 
-**Use Cases**: Account Items, Account Patterns, Trade Partners, Lease Ledgers
+**Key Components**:
+- `PageLayout` with header configuration
+- Primary action button in header
+- Back navigation to parent section
+- Data table or grid for content
+- Empty state handling
+- Loading state management
+
+**When to Use**:
+- Master data listing pages
+- Content management interfaces
+- Any collection of items requiring CRUD operations
+
+**Template Variables**:
+- `title`: Page title
+- `addButtonText`: Primary action text
+- `parentPath`: Back navigation target
+- `columns`: Table column definitions
+- `dataSource`: API endpoint or data source
+- `emptyMessage`: Text for empty state
+
+---
 
 ### 2. CRUD Form Pattern
 
-**Description**: Create/Edit forms in modal dialogs or side panels with validation and state management.
+**Purpose**: Create and edit entity forms with validation
 
-**Core Components**:
-- Dialog or SidePane container
-- Form fields with validation
-- Action buttons (Save, Cancel, Delete)
-- Loading states
+**Example**: `features/account-pattern/ui/account-patterns-form.tsx`
 
-**Real Implementation**: Account Pattern Creation (`pages/account-patterns-new/route.tsx`)
+**Structure**:
 ```jsx
-<Dialog open={isOpen} onClose={handleClose}>
-  <Dialog.Header>Create Account Pattern</Dialog.Header>
-  <Dialog.Body>
-    <TextInput
-      label="Pattern Name"
-      value={name}
-      onChange={setName}
-      error={errors.name}
-      required
-    />
-    <Select
-      label="Category"
-      options={categoryOptions}
-      value={category}
-      onChange={setCategory}
-    />
-  </Dialog.Body>
-  <Dialog.Footer>
-    <Button variant="secondary" onClick={handleClose}>Cancel</Button>
-    <Button variant="primary" onClick={handleSave} loading={isSaving}>
-      Save Pattern
-    </Button>
-  </Dialog.Footer>
-</Dialog>
+<form onSubmit={handleSubmit}>
+  <ConfirmEditingFormModal hasFormChanged={hasUnsavedChanges} />
+  <VStack gap={12}>
+    <VStack>
+      {/* Form fields using KeyValue layout */}
+      <KeyValue
+        gridTemplateColumns="160px 1fr"
+        keyItem={<label>Field Label <RequiredFieldIndicator /></label>}
+        valueItem={
+          <VStack gap={4}>
+            <TextBox value={value} onChange={onChange} />
+            {error && <HelpMessage messageType="error">{error}</HelpMessage>}
+          </VStack>
+        }
+      />
+    </VStack>
+    
+    {/* Action buttons */}
+    <HStack gap={7} justifyContent="flex-end">
+      <Button priority="secondary">Cancel</Button>
+      <Button priority="primary" type="submit" loading={loading}>
+        Save
+      </Button>
+    </HStack>
+  </VStack>
+</form>
 ```
 
-**Use Cases**: Entity creation/editing, Settings configuration, Data imports
+**Key Components**:
+- Form wrapper with validation
+- `ConfirmEditingFormModal` for unsaved changes
+- `KeyValue` layout for consistent field presentation
+- `RequiredFieldIndicator` for required fields
+- `HelpMessage` for validation errors
+- Action buttons with loading states
 
-### 3. Detail Page Pattern
-
-**Description**: Comprehensive view of single entity with related information organized in tabs or sections.
-
-**Core Components**:
-- PageHeader with entity name and actions
-- Tabs for different data sections
-- Cards for grouped information
-- Related data tables
-
-**Real Implementation**: Lease Ledger Details (`pages/lease-ledger-details/route.tsx`)
+**Form Field Patterns**:
 ```jsx
-<PageHeader 
-  title={`Lease Ledger: ${ledger.name}`}
-  breadcrumbs={breadcrumbs}
-  actions={<ActionDropdown />}
+// Text input field
+<KeyValue
+  keyItem={<label>Name <RequiredFieldIndicator /></label>}
+  valueItem={
+    <VStack gap={4}>
+      <TextBox
+        value={field.state.value}
+        onChange={e => field.handleChange(e.target.value)}
+        invalid={!field.state.meta.isValid}
+      />
+      {error && <HelpMessage messageType="error">{error}</HelpMessage>}
+    </VStack>
+  }
 />
-<Tabs defaultValue="overview">
-  <Tabs.List>
-    <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
-    <Tabs.Trigger value="schedule">Payment Schedule</Tabs.Trigger>
-    <Tabs.Trigger value="journal">Journal Entries</Tabs.Trigger>
-  </Tabs.List>
-  
-  <Tabs.Content value="overview">
-    <Card>
-      <Card.Header>Basic Information</Card.Header>
-      <Card.Body>
-        <DefinitionList data={basicInfo} />
-      </Card.Body>
-    </Card>
-  </Tabs.Content>
-</Tabs>
+
+// Select field
+<KeyValue
+  keyItem={<label>Category</label>}
+  valueItem={
+    <SelectBox
+      options={options}
+      value={selectedValue}
+      onChange={handleChange}
+    />
+  }
+/>
 ```
 
-**Use Cases**: Lease ledger details, Trade partner profiles, Account item details
+**When to Use**:
+- Entity creation forms
+- Entity editing forms
+- Settings and configuration pages
+- Any data input interface
 
-### 4. Dashboard Page Pattern
+**Template Variables**:
+- `entityName`: Entity being created/edited
+- `fields`: Array of form field definitions
+- `validationRules`: Form validation configuration
+- `submitAction`: Form submission handler
+- `cancelPath`: Navigation target for cancel action
 
-**Description**: Overview dashboard with key metrics, charts, and quick actions.
+---
 
-**Core Components**:
-- Metric cards with KPIs
-- Chart components for visualizations
-- Quick action buttons
-- Recent activity lists
+### 3. DataGrid Table Pattern
 
-**Real Implementation**: Main Dashboard (`pages/dashboard/route.tsx`)
+**Purpose**: Complex data tables with sorting, filtering, and interactions
+
+**Example**: `pages/account-patterns/ui/account-pattern-table.tsx`
+
+**Structure**:
 ```jsx
-<PageHeader title="Dashboard" />
-<Grid cols={3} gap="lg">
-  <MetricCard
-    title="Total Lease Assets"
-    value={formatCurrency(totalAssets)}
-    trend={+2.5}
-    icon={<TrendingUpIcon />}
-  />
-  <MetricCard
-    title="Pending Approvals"
-    value={pendingCount}
-    urgent={pendingCount > 10}
-    action={<Button size="sm" onClick={viewApprovals}>Review</Button>}
-  />
-</Grid>
-
-<Card>
-  <Card.Header>Recent Activity</Card.Header>
-  <List>
-    {recentActivity.map(item => (
-      <List.Item key={item.id}>
-        <ActivityItem data={item} />
-      </List.Item>
-    ))}
-  </List>
-</Card>
+<VStack gap={16}>
+  <DataGrid
+    layout="edge-to-edge"
+    leftFixedColumnIndex={1}
+    rightFixedColumnIndex={-1}
+    fixedHeader
+    size="medium"
+  >
+    <colgroup>
+      {columns.map(col => <col key={col.key} style={{ width: col.width }} />)}
+    </colgroup>
+    
+    <DataGrid.Header>
+      <DataGrid.HeaderRow>
+        {columns.map(col => (
+          <DataGrid.HeaderCell key={col.key}>
+            {col.label}
+          </DataGrid.HeaderCell>
+        ))}
+      </DataGrid.HeaderRow>
+    </DataGrid.Header>
+    
+    <DataGrid.Body>
+      {data.map(row => (
+        <DataGrid.Row key={row.id}>
+          {columns.map(col => (
+            <DataGrid.Cell key={col.key}>
+              {col.render(row)}
+            </DataGrid.Cell>
+          ))}
+        </DataGrid.Row>
+      ))}
+    </DataGrid.Body>
+  </DataGrid>
+  
+  {showEmpty && <EmptyContentMessage message="No data found" />}
+</VStack>
 ```
 
-**Use Cases**: Main dashboard, Settings overview, Department summaries
-
-### 5. SidePane Workflow Pattern
-
-**Description**: Multi-step processes that open in side panel without leaving current page context.
-
-**Core Components**:
-- SidePane container with close action
-- Step progress indicator
-- Form sections for each step
-- Navigation buttons (Next, Previous, Finish)
-
-**Real Implementation**: Survey Form Import (`pages/lease-ledgers/survey-form-import-with-navigation.stories.tsx`)
+**Column Definition Pattern**:
 ```jsx
-<SidePane open={isOpen} onClose={handleClose} width="large">
-  <SidePane.Header>
-    Import Survey Form
-    <ProgressIndicator currentStep={currentStep} totalSteps={3} />
-  </SidePane.Header>
-  
-  <SidePane.Body>
-    {currentStep === 1 && <FileUploadStep />}
-    {currentStep === 2 && <DataMappingStep />}
-    {currentStep === 3 && <ReviewStep />}
-  </SidePane.Body>
-  
-  <SidePane.Footer>
-    <Button 
-      variant="secondary" 
-      onClick={handlePrevious}
-      disabled={currentStep === 1}
-    >
-      Previous
+const columns = [
+  {
+    key: 'name',
+    label: 'Name',
+    width: 200,
+    render: (row) => <Typography>{row.name}</Typography>
+  },
+  {
+    key: 'status',
+    label: 'Status',
+    width: 120,
+    render: (row) => <Badge variant={row.status}>{row.statusText}</Badge>
+  },
+  {
+    key: 'actions',
+    label: '',
+    width: 100,
+    render: (row) => (
+      <Button size="small" href={`/edit/${row.id}`}>
+        Edit
+      </Button>
+    )
+  }
+];
+```
+
+**Custom Cell Components**:
+```jsx
+// Multi-line cell content
+const AccountCell = ({ accountItem, subAccountItem }) => (
+  <VStack gap={4}>
+    <Typography variant="condensedBody">{accountItem.code}</Typography>
+    <EllipsisTypography>{accountItem.name}</EllipsisTypography>
+    <div className={styles.divider} />
+    <Typography variant="condensedBody">{subAccountItem.code}</Typography>
+    <EllipsisTypography>{subAccountItem.name}</EllipsisTypography>
+  </VStack>
+);
+
+// Action cell with tooltip
+const ActionCell = ({ row }) => (
+  <HStack gap={4}>
+    <Button size="small" disabled={!row.isEditable}>
+      Edit
     </Button>
-    <Button 
-      variant="primary" 
-      onClick={currentStep === 3 ? handleFinish : handleNext}
-    >
-      {currentStep === 3 ? 'Import' : 'Next'}
-    </Button>
-  </SidePane.Footer>
+    {!row.isEditable && (
+      <Tooltip content="Cannot edit this item">
+        <HelpIcon />
+      </Tooltip>
+    )}
+  </HStack>
+);
+```
+
+**When to Use**:
+- Large datasets requiring tabular display
+- Data requiring sorting or filtering
+- Complex data with multiple attributes per row
+- Any interface where users need to scan/compare data
+
+**Template Variables**:
+- `columns`: Table column definitions
+- `dataSource`: API endpoint for table data
+- `sortable`: Enable column sorting
+- `filterable`: Enable filtering controls
+- `selectable`: Enable row selection
+- `fixedColumns`: Configure fixed column behavior
+
+---
+
+### 4. SidePane Workflow Pattern
+
+**Purpose**: Secondary content and editing workflows
+
+**Example**: `shared/ui/fixed-bottom-sidepane.tsx`
+
+**Structure**:
+```jsx
+<SidePane
+  className={classNames(styles.sidepane, className)}
+  open={open}
+  onClose={onClose}
+>
+  <div className={styles.layoutContainer}>
+    {/* Main content area */}
+    <div className={styles.contentArea}>
+      <VStack gap={16}>
+        <Heading variant="h2">Sidepane Title</Heading>
+        <SidepaneContent />
+      </VStack>
+    </div>
+    
+    {/* Fixed bottom actions */}
+    <div className={styles.fixedBottomContent}>
+      <HStack gap={8} justifyContent="flex-end">
+        <Button priority="secondary" onClick={onClose}>
+          Cancel
+        </Button>
+        <Button priority="primary" onClick={onSave}>
+          Save
+        </Button>
+      </HStack>
+    </div>
+  </div>
 </SidePane>
 ```
 
-**Use Cases**: Data imports, Approval workflows, Multi-step configurations
+**Portal Integration**:
+```jsx
+const FixedBottomPort = ({ children, id }) => {
+  const element = document.getElementById(`sidepane-${id}-bottom`);
+  if (!element) return null;
+  return createPortal(children, element);
+};
+
+// Usage
+<SidePane>
+  <MainContent />
+  <FixedBottomPort id="edit-form">
+    <ActionButtons />
+  </FixedBottomPort>
+</SidePane>
+```
+
+**When to Use**:
+- Quick edit workflows
+- Secondary information display
+- Multi-step processes
+- Detail views that don't require full page navigation
+
+**Template Variables**:
+- `title`: Sidepane heading
+- `content`: Main content component
+- `actions`: Bottom action buttons
+- `width`: Sidepane width configuration
+- `closeAction`: Close handler
+
+---
+
+### 5. Page Header Pattern
+
+**Purpose**: Consistent page headers with navigation and actions
+
+**Example**: Used across all page templates
+
+**Structure**:
+```jsx
+<PageLayout
+  headerSlot={
+    <PageLayout.Header
+      headingSlot={pageTitle}
+      actionSlot={
+        <HStack gap={8}>
+          <Button priority="secondary">Secondary Action</Button>
+          <Button priority="primary">Primary Action</Button>
+        </HStack>
+      }
+      backButtonProps={{
+        href: parentPath,
+        onClick: handleBack
+      }}
+      showBackButton={hasParent}
+    />
+  }
+>
+  <PageContent />
+</PageLayout>
+```
+
+**Variations**:
+
+**Simple Header**:
+```jsx
+<PageLayout.Header
+  headingSlot="Simple Page"
+/>
+```
+
+**Header with Single Action**:
+```jsx
+<PageLayout.Header
+  headingSlot="Page with Action"
+  actionSlot={<Button priority="primary">Add New</Button>}
+/>
+```
+
+**Header with Back Navigation**:
+```jsx
+<PageLayout.Header
+  headingSlot="Detail Page"
+  backButtonProps={{ href: "/list" }}
+  showBackButton
+/>
+```
+
+**When to Use**:
+- All full-page interfaces
+- Consistent navigation experience
+- Action placement standardization
+
+**Template Variables**:
+- `title`: Page heading text
+- `primaryAction`: Main action button
+- `secondaryActions`: Additional action buttons
+- `showBackButton`: Enable back navigation
+- `backPath`: Back navigation target
+
+---
 
 ## Layout Patterns
 
 ### Standard Page Layout
 ```jsx
-<GlobalHeader />
-<MainNavigation />
-<main>
-  <PageHeader />
-  <PageContent />
-</main>
+<PageLayout
+  headerSlot={<PageHeader />}
+>
+  <VStack gap={24}>
+    <MainContent />
+    <SecondaryContent />
+  </VStack>
+</PageLayout>
 ```
 
-### List Page Layout
+### Two-Column Layout
 ```jsx
-<PageHeader title="Items" actions={<CreateButton />} />
-<Toolbar>
-  <SearchInput />
-  <FilterDropdown />
-  <ViewToggle />
-</Toolbar>
-<DataGrid />
-<Pagination />
+<HStack gap={24} alignItems="flex-start">
+  <VStack gap={16} style={{ flex: 2 }}>
+    <PrimaryContent />
+  </VStack>
+  <VStack gap={16} style={{ flex: 1 }}>
+    <SidebarContent />
+  </VStack>
+</HStack>
 ```
 
-### Detail Page Layout
+### Card Grid Layout
 ```jsx
-<PageHeader title="Item Details" breadcrumbs actions />
-<Tabs>
-  <TabContent>
-    <Grid>
-      <Card>Primary Info</Card>
-      <Card>Secondary Info</Card>
-    </Grid>
-    <Card>Related Data Table</Card>
-  </TabContent>
-</Tabs>
+<div className={styles.cardGrid}>
+  {items.map(item => (
+    <Panel key={item.id} className={styles.card}>
+      <CardContent item={item} />
+    </Panel>
+  ))}
+</div>
 ```
-
-## Navigation Patterns
-
-### Hierarchical Navigation
-- GlobalHeader: Top-level navigation between products
-- MainNavigation: Feature-level navigation within product
-- PageHeader: Page-level context and actions
-- Breadcrumbs: Path within feature hierarchy
-
-### Action Patterns
-- Primary actions in PageHeader
-- Row actions in DataGrid
-- Bulk actions in Toolbar
-- Contextual actions in DropdownMenus
 
 ## State Management Patterns
 
 ### Loading States
 ```jsx
-// Table loading
-<DataGrid loading={isLoading} data={data} />
+if (isLoading) {
+  return <FullScreenLoading />;
+}
 
-// Button loading
-<Button loading={isSaving} onClick={handleSave}>
-  Save Changes
-</Button>
-
-// Page loading
-{isLoading ? <PageSkeleton /> : <PageContent />}
-```
-
-### Error States
-```jsx
-// Field validation
-<TextInput 
-  error={errors.name}
-  helperText="Name is required"
-/>
-
-// Page-level errors
-<ErrorBoundary fallback={<ErrorMessage />}>
-  <PageContent />
-</ErrorBoundary>
+// Or for partial loading
+<VStack gap={16}>
+  <Skeleton height={40} />
+  <Skeleton height={200} />
+  <Skeleton height={60} />
+</VStack>
 ```
 
 ### Empty States
 ```jsx
-// Empty data tables
-<DataGrid 
-  data={[]} 
-  emptyMessage="No items found"
-  emptyAction={<Button>Create First Item</Button>}
-/>
+const showEmpty = !isLoading && data.length === 0;
+
+return (
+  <VStack gap={16}>
+    <DataGrid>
+      {/* Table content */}
+    </DataGrid>
+    {showEmpty && (
+      <EmptyContentMessage 
+        message="No items found"
+        actionSlot={<Button>Add First Item</Button>}
+      />
+    )}
+  </VStack>
+);
 ```
 
-## Responsive Patterns
+### Error States
+```jsx
+if (error) {
+  return (
+    <SectionMessage messageType="error">
+      <Typography>Failed to load data: {error.message}</Typography>
+      <Button onClick={retry}>Retry</Button>
+    </SectionMessage>
+  );
+}
+```
 
-### Mobile Adaptations
-- DataGrid transforms to stacked cards on mobile
-- MainNavigation collapses to hamburger menu
-- SidePane becomes full-screen modal
-- Form fields stack vertically
+## Form Patterns
 
-### Breakpoint Usage
-- Mobile: Up to 768px
-- Tablet: 768px - 1024px  
-- Desktop: 1024px+
-- Wide: 1440px+
+### Validation Display
+```jsx
+<VStack gap={4}>
+  <TextBox
+    value={value}
+    onChange={onChange}
+    invalid={!isValid}
+  />
+  {errors.map(error => (
+    <HelpMessage key={error.code} messageType="error">
+      {error.message}
+    </HelpMessage>
+  ))}
+</VStack>
+```
 
-## Performance Patterns
+### Required Field Indication
+```jsx
+<HStack gap={7} justifyContent="space-between">
+  <label htmlFor="fieldId">Field Label</label>
+  <RequiredFieldIndicator />
+</HStack>
+```
 
-### Data Loading
-- Use pagination for large datasets
-- Implement virtual scrolling for very long lists
-- Load detail data on demand (tabs, accordions)
-- Cache frequently accessed data
+### Form Section Grouping
+```jsx
+<VStack gap={24}>
+  <VStack gap={12}>
+    <Heading variant="h3">Basic Information</Heading>
+    <FormFields />
+  </VStack>
+  
+  <VStack gap={12}>
+    <Heading variant="h3">Additional Details</Heading>
+    <AdditionalFields />
+  </VStack>
+</VStack>
+```
 
-### Code Splitting
-- Route-based code splitting
-- Component lazy loading for heavy features
-- Dynamic imports for optional functionality
+## Navigation Patterns
 
-## Accessibility Patterns
+### Breadcrumb Navigation
+```jsx
+<HStack gap={8} alignItems="center">
+  <TextLink href="/dashboard">Dashboard</TextLink>
+  <Typography variant="caption">/</Typography>
+  <TextLink href="/settings">Settings</TextLink>
+  <Typography variant="caption">/</Typography>
+  <Typography>Current Page</Typography>
+</HStack>
+```
 
-### Keyboard Navigation
-- Tab order follows visual hierarchy
-- Skip links for main content
-- Focus management in modals and menus
-- Escape key closes overlays
+### Tab Navigation
+```jsx
+<Tabs value={activeTab} onChange={setActiveTab}>
+  <Tabs.List>
+    <Tabs.Tab value="overview">Overview</Tabs.Tab>
+    <Tabs.Tab value="details">Details</Tabs.Tab>
+    <Tabs.Tab value="history">History</Tabs.Tab>
+  </Tabs.List>
+  
+  <Tabs.Panel value="overview">
+    <OverviewContent />
+  </Tabs.Panel>
+  <Tabs.Panel value="details">
+    <DetailsContent />
+  </Tabs.Panel>
+  <Tabs.Panel value="history">
+    <HistoryContent />
+  </Tabs.Panel>
+</Tabs>
+```
 
-### Screen Reader Support
-- Proper heading hierarchy (h1, h2, h3)
-- ARIA labels for interactive elements
-- Live regions for dynamic content
-- Table headers properly associated
+## CSS Module Patterns
 
-## Error Handling Patterns
+### Component-Scoped Styling
+```css
+/* component.module.css */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mfui-space-section-vertical);
+}
 
-### Form Validation
-- Real-time validation on blur
-- Summary of errors at form level
-- Inline error messages
-- Accessible error announcements
+.header {
+  padding: var(--mfui-space-container-horizontal) var(--mfui-space-key-value-horizontal);
+  border-bottom: 1px solid var(--mfui-color-neutral-border-none);
+}
 
-### API Error Handling
-- Toast notifications for save errors
-- Retry mechanisms for failed requests
-- Graceful degradation for offline state
-- User-friendly error messages
+.content {
+  flex: 1;
+  padding: var(--mfui-space-key-value-horizontal);
+}
+```
 
-These patterns provide proven templates for implementing consistent, accessible, and performant user interfaces using the MFUI component library.
+### Responsive Design
+```css
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--mfui-space-container-horizontal);
+}
+
+@media (max-width: 768px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+## Usage Guidelines for Agents
+
+### Pattern Selection Decision Tree
+
+1. **Is this a data listing interface?** → Use List/Index Page Pattern
+2. **Is this a form for creating/editing?** → Use CRUD Form Pattern
+3. **Is this a complex data table?** → Use DataGrid Table Pattern
+4. **Is this secondary workflow content?** → Use SidePane Workflow Pattern
+5. **Does this need consistent page structure?** → Use Page Header Pattern
+
+### Code Generation Guidelines
+
+1. **Always include proper imports** for MFUI components
+2. **Use CSS Modules** for component-specific styling
+3. **Include TypeScript types** for props and state
+4. **Add proper accessibility attributes** (labels, ARIA)
+5. **Handle loading and error states** appropriately
+6. **Follow established spacing patterns** using VStack/HStack
+7. **Include validation** for form inputs
+8. **Provide empty states** for data displays
+
+### Quality Checklist
+
+- [ ] Uses semantic MFUI components
+- [ ] Follows established layout patterns
+- [ ] Includes proper TypeScript types
+- [ ] Handles loading states
+- [ ] Handles error states
+- [ ] Handles empty states
+- [ ] Uses CSS Modules for styling
+- [ ] Includes accessibility attributes
+- [ ] Follows MoneyForward design principles
+- [ ] Matches existing LA Frontend patterns
+
+## Template Generation Variables
+
+Each pattern should support these common variables:
+
+- `componentName`: Generated component name
+- `entityName`: Business entity name
+- `apiEndpoint`: Data source URL
+- `fields`: Array of field definitions
+- `actions`: Available user actions
+- `navigationPaths`: Related page URLs
+- `permissions`: User permission checks
+- `validationRules`: Form validation logic
+
+*Source: LA Frontend codebase analysis*
+*Last updated: 2025-01-14*

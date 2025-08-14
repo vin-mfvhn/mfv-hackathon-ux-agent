@@ -1,34 +1,40 @@
 /**
- * The paths used in the application.
+ * The paths used in the Department Reporting application.
+ * Based on the MFUI Frontend Specification site map.
  */
 export const Paths = {
   Home: '/',
 
+  // Department Reporting Main Sections
+  Executive: {
+    Index: '/executive',
+    Department: '/executive/department/:departmentId',
+    Location: '/executive/department/:departmentId/location/:locationId',
+    Contract: '/executive/contract/:contractId',
+  },
+
+  MyDepartment: {
+    Index: '/my-department',
+    Costs: '/my-department/costs',
+    Budget: '/my-department/budget',
+    Utilization: '/my-department/utilization',
+    Renewals: '/my-department/renewals',
+  },
+
+  Allocation: {
+    Index: '/allocation',
+    Methods: '/allocation/methods',
+    Mapping: '/allocation/mapping',
+    Preview: '/allocation/preview',
+  },
+
+  Reports: {
+    Index: '/reports',
+    Templates: '/reports/templates',
+    Scheduled: '/reports/scheduled',
+    Export: '/reports/export',
+  },
+
+  // Legacy paths for compatibility
   Dashboard: '/',
-
-  // Department Reporting & Cost Allocation paths
-  DepartmentReporting: {
-    Dashboard: '/department-reporting',
-    AllocationConfig: '/department-reporting/allocation-config',
-    DepartmentDetail: '/department-reporting/departments/:departmentId',
-    Reports: '/department-reporting/reports',
-  },
-
-  // Original demo paths kept for reference
-  Users: {
-    Index: '/users',
-    Detail: '/users/:userId',
-  },
-
-  Posts: {
-    Index: '/posts',
-    Detail: '/posts/:postId',
-    New: '/posts/new',
-    Edit: '/posts/:postId/edit',
-    Destroy: '/posts/:postId/destroy',
-  },
-
-  Comments: '/comments',
-
-  Todos: '/todos',
 } as const;

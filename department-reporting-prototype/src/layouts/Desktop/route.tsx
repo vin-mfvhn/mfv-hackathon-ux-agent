@@ -41,34 +41,29 @@ export const Component: FC = () => {
 
   const navigationItems = [
     {
-      to: Paths.DepartmentReporting.Dashboard,
+      to: Paths.Dashboard,
       icon: <Applications />,
-      label: 'Department Dashboard',
+      label: 'Dashboard',
     },
     {
-      to: Paths.DepartmentReporting.AllocationConfig,
+      to: Paths.Executive.Index,
       icon: <Document />,
+      label: 'Executive Dashboard',
+    },
+    {
+      to: Paths.MyDepartment.Index,
+      icon: <Employee />,
+      label: 'My Department',
+    },
+    {
+      to: Paths.Allocation.Index,
+      icon: <CheckboxChecked />,
       label: 'Allocation Config',
     },
     {
-      to: Paths.Users.Index,
-      icon: <Employee />,
-      label: 'Users',
-    },
-    {
-      to: Paths.Posts.Index,
-      icon: <Document />,
-      label: 'Posts',
-    },
-    {
-      to: Paths.Comments,
+      to: Paths.Reports.Index,
       icon: <Chat />,
-      label: 'Comments',
-    },
-    {
-      to: Paths.Todos,
-      icon: <CheckboxChecked />,
-      label: 'Todos',
+      label: 'Reports',
     },
   ];
 

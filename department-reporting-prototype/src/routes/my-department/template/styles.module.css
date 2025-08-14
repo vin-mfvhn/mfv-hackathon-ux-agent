@@ -1,0 +1,214 @@
+/* Department Manager Portal Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20);
+}
+
+.userInfo {
+  margin-top: 4px;
+  color: var(--mfui-color-neutral-70);
+}
+
+/* Summary Cards */
+.summaryRow {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+.summaryCard {
+  flex: 1;
+  min-height: 140px;
+  padding: 20px;
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  border-radius: 8px;
+  border: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+}
+
+/* Tab Navigation */
+.tabHeaders {
+  display: flex;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mfui-color-neutral-70, #666);
+  border-bottom: 2px solid transparent;
+}
+
+.tabButton:hover {
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+}
+
+.tabActive {
+  color: var(--mfui-color-blue-49, #1890ff) !important;
+  border-bottom-color: var(--mfui-color-blue-49, #1890ff) !important;
+}
+
+.tabContent {
+  padding: 20px 0;
+}
+
+/* Location List */
+.locationList {
+  margin-top: 16px;
+}
+
+.locationItem {
+  padding: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* Renewals List */
+.renewalsList {
+  margin-top: 16px;
+}
+
+.renewalItem {
+  padding: 16px;
+  border-bottom: 1px solid var(--mfui-color-neutral-20, #e5e5e5);
+  background: var(--mfui-color-neutral-5, #f8f9fa);
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+/* Priority Badges */
+.priorityBadge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.priorityhigh {
+  background: #ff4d4f;
+  color: white;
+}
+
+.prioritymedium {
+  background: #faad14;
+  color: white;
+}
+
+.prioritylow {
+  background: #52c41a;
+  color: white;
+}
+
+.costValue {
+  font-size: 32px;
+  color: var(--mfui-color-blue-49);
+}
+
+.utilizationValue {
+  font-size: 32px;
+  color: var(--mfui-color-signal-green);
+}
+
+/* Budget Chart */
+.budgetChart {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.budgetPoint {
+  padding: 16px;
+  background: var(--mfui-color-neutral-5);
+  border-radius: 8px;
+}
+
+/* Underutilized Spaces List */
+.underutilizedList {
+  list-style: none;
+  padding: 0;
+  margin-top: 12px;
+}
+
+.underutilizedList li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--mfui-color-neutral-10);
+}
+
+.underutilizedList li:last-child {
+  border-bottom: none;
+}
+
+/* Action Items */
+.actionItem {
+  padding: 16px;
+  background: var(--mfui-color-neutral-5);
+  border-radius: 8px;
+  border-left: 4px solid var(--mfui-color-blue-49);
+}
+
+.actionHeader {
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* Responsive Design */
+@media (width < 768px) {
+  .pageHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .summaryRow {
+    flex-direction: column;
+  }
+  
+  .budgetChart {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width >= 768px) and (width < 1024px) {
+  .summaryRow {
+    flex-wrap: wrap;
+  }
+  
+  .summaryCard {
+    flex-basis: calc(50% - 8px);
+  }
+}
+
+/* Tab Content Styling */
+:global(.mfui-tabs-content) {
+  padding-top: 20px;
+}
+
+/* Progress Indicator Customization */
+:global(.mfui-progress-indicator) {
+  margin: 8px 0;
+}
+
+/* KeyValue Layout Enhancements */
+:global(.mfui-keyvalue) {
+  background: var(--mfui-color-neutral-5);
+  padding: 12px;
+  border-radius: 6px;
+}
