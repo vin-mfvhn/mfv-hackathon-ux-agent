@@ -1,0 +1,3 @@
+[submodule "frontend-boilerplate"]
+	path = frontend-boilerplate
+	url = https://github.com/moneyforward/frontend-boilerplate.git
