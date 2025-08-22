@@ -1,0 +1,35 @@
+declare const styles: {
+  readonly "actions": string;
+  readonly "contentContainer": string;
+  readonly "departmentCell": string;
+  readonly "departmentInfo": string;
+  readonly "employeeCell": string;
+  readonly "employeeInfo": string;
+  readonly "headerContent": string;
+  readonly "newHireRow": string;
+  readonly "overdueText": string;
+  readonly "pageBody": string;
+  readonly "pageContainer": string;
+  readonly "pageHeader": string;
+  readonly "phaseComplete": string;
+  readonly "phaseInProgress": string;
+  readonly "progressCell": string;
+  readonly "progressDetails": string;
+  readonly "progressInfo": string;
+  readonly "progressRow": string;
+  readonly "quickActions": string;
+  readonly "quickActionsContainer": string;
+  readonly "statusAtRisk": string;
+  readonly "statusOnTrack": string;
+  readonly "statusOverdue": string;
+  readonly "subtext": string;
+  readonly "summaryCard": string;
+  readonly "summaryGrid": string;
+  readonly "summaryLabel": string;
+  readonly "summaryNumber": string;
+  readonly "summaryPercentage": string;
+  readonly "table": string;
+  readonly "tableContainer": string;
+};
+export = styles;
+

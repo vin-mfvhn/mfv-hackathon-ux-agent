@@ -1,0 +1,212 @@
+.pageContainer {
+  min-height: 100vh;
+  background: var(--color-background-default);
+}
+
+.pageHeader {
+  background: var(--color-background-panel);
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--spacing-container-vertical) var(--spacing-container-horizontal);
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.headerContent h1 {
+  margin: 0 0 var(--spacing-paragraph-vertical) 0;
+  color: var(--color-text-primary);
+}
+
+.headerContent p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.pageBody {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-container-vertical) var(--spacing-container-horizontal);
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-section-vertical);
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-paragraph-horizontal);
+  margin-bottom: var(--spacing-section-vertical);
+}
+
+.summaryCard {
+  background: var(--color-background-panel);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-paragraph-vertical) var(--spacing-paragraph-horizontal);
+  text-align: center;
+}
+
+.summaryNumber {
+  font-size: var(--font-size-page-heading-1);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-paragraph-vertical);
+}
+
+.summaryLabel {
+  font-size: var(--font-size-help-message);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-paragraph-vertical);
+}
+
+.summaryPercentage {
+  background: var(--color-background-primary-subtle);
+  color: var(--color-text-primary);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-horizontal-2);
+  padding: var(--spacing-paragraph-vertical) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.tableContainer {
+  background: var(--color-background-panel);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-container-vertical) var(--spacing-container-horizontal);
+}
+
+.subtext {
+  font-size: var(--font-size-help-message);
+  color: var(--color-text-secondary);
+}
+
+.progressRow {
+  align-items: center;
+}
+
+.progressDetails {
+  font-size: var(--font-size-help-message);
+  color: var(--color-text-tertiary);
+}
+
+.overdueText {
+  font-size: var(--font-size-help-message);
+  color: var(--color-text-error);
+  font-weight: var(--font-weight-medium);
+}
+
+.quickActions {
+  background: var(--color-background-panel);
+  border-radius: var(--border-radius-medium);
+  padding: var(--spacing-container-vertical) var(--spacing-container-horizontal);
+}
+
+.quickActions h3 {
+  margin-bottom: var(--spacing-paragraph-vertical);
+  color: var(--color-text-primary);
+}
+
+.quickActionsContainer {
+  display: flex;
+  gap: var(--spacing-horizontal-2);
+  flex-wrap: wrap;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-paragraph-vertical);
+}
+
+.table th,
+.table td {
+  padding: var(--spacing-paragraph-vertical) var(--spacing-paragraph-horizontal);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.table th {
+  background: var(--color-background-default);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.newHireRow:hover {
+  background: var(--color-background-hover);
+}
+
+.employeeCell,
+.departmentCell,
+.progressCell {
+  min-width: 150px;
+}
+
+.employeeInfo,
+.departmentInfo,
+.progressInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-paragraph-vertical);
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-horizontal-1);
+}
+
+.statusOnTrack {
+  background: var(--color-background-success-subtle);
+  color: var(--color-text-success);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusAtRisk {
+  background: var(--color-background-warning-subtle);
+  color: var(--color-text-warning);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
+
+.statusOverdue {
+  background: var(--color-background-error-subtle);
+  color: var(--color-text-error);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
+
+.phaseComplete {
+  background: var(--color-background-success-subtle);
+  color: var(--color-text-success);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
+
+.phaseInProgress {
+  background: var(--color-background-info-subtle);
+  color: var(--color-text-info);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-small);
+  font-size: var(--font-size-help-message);
+  font-weight: var(--font-weight-medium);
+}
