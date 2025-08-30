@@ -34,7 +34,7 @@ export const Component: FC = () => {
       description: 'Cost overview and variance analysis',
     },
     {
-      label: 'My Department',
+      label: 'My Department screen',
       figure: summary.departments,
       to: Paths.MyDepartment.Index,
       themeColor: '#52c41a',
@@ -48,7 +48,7 @@ export const Component: FC = () => {
       description: 'Cost allocation setup',
     },
     {
-      label: 'Reports',
+      label: 'Reports Center screen',
       figure: summary.locations,
       to: Paths.Reports.Index,
       themeColor: '#722ed1',

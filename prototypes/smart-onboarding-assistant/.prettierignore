@@ -1,5 +1,0 @@
-.next/
-build/
-dist/
-storybook-static/
-**/*.css.d.ts
